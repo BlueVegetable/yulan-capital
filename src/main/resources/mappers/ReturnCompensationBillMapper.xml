@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yulan.dao.ReturnCompensationBillDao">
+    <resultMap id="BaseResultMap" type="ReturnCompensationBill" >
+        <id column="ID" property="id" jdbcType="CHAR" />
+        <result column="ERP_CREATOR" property="erpCreator" jdbcType="VARCHAR" />
+        <result column="ERP_CREATORNAME" property="erpCreatorname" jdbcType="VARCHAR" />
+        <result column="CREATE_TS" property="createTs" jdbcType="TIMESTAMP" />
+        <result column="CID" property="cid" jdbcType="VARCHAR" />
+        <result column="CNAME" property="cname" jdbcType="VARCHAR" />
+        <result column="REASSURE_TS" property="reassureTs" jdbcType="TIMESTAMP" />
+        <result column="SENDBACK_REASON" property="sendbackReason" jdbcType="VARCHAR" />
+        <result column="ITEM_COUNT" property="itemCount" jdbcType="DECIMAL" />
+        <result column="ITEM_MAX_INDEX" property="itemMaxIndex" jdbcType="DECIMAL" />
+        <result column="STATE" property="state" jdbcType="VARCHAR" />
+        <result column="PRINTED" property="printed" jdbcType="CHAR" />
+    </resultMap>
+
+    <select id="getReturnCompensationBill" parameterType="String" resultType="ReturnCompensationBill">
+        select * from RETURNCOMPENSATIONBILL where id = #{id}
+    </select>
+
+    <select id="getSimpleReturnCompensationBills" parameterType="Map" resultMap="BaseResultMap">
+        SELECT * FROM (SELECT ROWNUM AS rowno, t.* FROM RETURNCOMPENSATIONBILL t
+        where ROWNUM &lt; #{end} and cid = #{CID}
+        <if test="startTime != null">
+            and CREATE_TS between #{startTime} and #{endTime}
+        </if>
+        <if test="state != null">
+            and state = #{state}
+        </if>
+        order by id)
+        table_alias WHERE table_alias.rowno &gt;= #{start}
+    </select>
+
+</mapper>

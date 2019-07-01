@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yulan.dao.RtcbItemDao">
+    <resultMap id="RtcbItemMap" type="RtcbItem" >
+        <result column="RTCB_ID" property="rtcbId" jdbcType="CHAR" />
+        <result column="ITEM_INDEX" property="itemIndex" jdbcType="DECIMAL" />
+        <result column="ITEM_NO" property="itemNo" jdbcType="VARCHAR" />
+        <result column="PRODUCTION_VERSION" property="productionVersion" jdbcType="VARCHAR" />
+        <result column="UNIT" property="unit" jdbcType="VARCHAR" />
+        <result column="QTY" property="qty" jdbcType="DECIMAL" />
+        <result column="TOTALMONEY" property="totalmoney" jdbcType="DECIMAL" />
+        <result column="NOTES" property="notes" jdbcType="VARCHAR" />
+        <result column="PROCESS" property="process" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="getRtcbItemsByRtcbID" parameterType="String" resultMap="RtcbItemMap">
+        select * from RTCB_ITEM t where rtcb_id = #{rtcbID} order by item_index
+    </select>
+
+</mapper>
