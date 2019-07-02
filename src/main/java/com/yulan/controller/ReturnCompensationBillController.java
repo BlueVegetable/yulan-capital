@@ -27,6 +27,12 @@ public class ReturnCompensationBillController {
     }
 
     @ResponseBody
+    @RequestMapping("deleteReturnCompensationBill")
+    public Map deleteReturnCompensationBill(String id) {
+        return Response.getResponseMap(0,"",returnCompensationBillService.deleteReturnCompensationBill(id));
+    }
+
+    @ResponseBody
     @RequestMapping("getReturnCompensationBills")
     public Map<String,Object> getReturnCompensationBills
             (@RequestParam(value = "CID",required = false)String CID,
@@ -52,6 +58,12 @@ public class ReturnCompensationBillController {
     public Map<String,Object> getReturnCompensationBillByID(@RequestParam("id")String id) {
         ReturnCompensationBill returnCompensationBill = returnCompensationBillService.getReturnCompensationBill(id);
         return Response.getResponseMap(0,"",returnCompensationBill);
+    }
+
+    @ResponseBody
+    @RequestMapping("updateReturnCompensationBill")
+    public Map updateReturnCompensationBill(@RequestBody ReturnCompensationBill returnCompensationBill) {
+        return Response.getResponseMap(0,"",returnCompensationBillService.updateReturnCompensationBill(returnCompensationBill));
     }
 
 }

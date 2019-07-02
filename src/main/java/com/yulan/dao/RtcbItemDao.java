@@ -9,6 +9,8 @@ public interface RtcbItemDao {
 
     int addRtcbItems(@Param("rtcbItems") List<RtcbItem> rtcbItems);
 
+    int deleteRtcbItemsByRtcbID(String rtcbID);
+
     List<RtcbItem> getRtcbItemsByRtcbID(String rtcbID);
 
 }

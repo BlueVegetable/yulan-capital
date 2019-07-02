@@ -48,6 +48,12 @@ public class ReturnCompensationBillService {
         return true;
     }
 
+    public boolean deleteReturnCompensationBill(String id) {
+        rtcbItemDao.deleteRtcbItemsByRtcbID(id);
+        returnCompensationBillDao.deleteReturnCompensationBill(id);
+        return true;
+    }
+
     public List<ReturnCompensationBill> getSimpleReturnCompensationBills(String CID, Integer page, Integer number,
                                                                          Timestamp startTime,Timestamp endTime,String state,
                                                                          String createName,String cName) {
@@ -95,6 +101,25 @@ public class ReturnCompensationBillService {
         }
         returnCompensationBill.setRtcbItems(rtcbItems);
         return returnCompensationBill;
+    }
+
+    public boolean updateReturnCompensationBill(ReturnCompensationBill returnCompensationBill) {
+        String id = returnCompensationBill.getId();
+        rtcbItemDao.deleteRtcbItemsByRtcbID(id);
+        List<RtcbItem> rtcbItems = returnCompensationBill.getRtcbItems();
+        if(rtcbItems == null||rtcbItems.size() == 0) {
+            return false;
+        }
+        returnCompensationBill.setId(id);
+        for (RtcbItem rtcbItem:rtcbItems) {
+            rtcbItem.setRtcbId(id);
+            rtcbItem.setProductionVersion(StringUtil.UTF8ToGBK(rtcbItem.getProductionVersion()));
+            rtcbItem.setUnit(StringUtil.UTF8ToGBK(rtcbItem.getUnit()));
+            rtcbItem.setNotes(StringUtil.UTF8ToGBK(rtcbItem.getNotes()));
+            rtcbItem.setProcess(StringUtil.UTF8ToGBK(rtcbItem.getProcess()));
+        }
+        rtcbItemDao.addRtcbItems(rtcbItems);
+        return true;
     }
 
     private synchronized String generateID() {

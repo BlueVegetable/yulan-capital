@@ -9,6 +9,8 @@ public interface ReturnCompensationBillDao {
 
     int addReturnCompensationBill(ReturnCompensationBill returnCompensationBill);
 
+    int deleteReturnCompensationBill(String id);
+
     String getMaxID(String previous);
 
     ReturnCompensationBill getReturnCompensationBill(String id);
