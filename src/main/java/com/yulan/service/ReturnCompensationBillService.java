@@ -8,7 +8,9 @@ import com.yulan.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +22,31 @@ public class ReturnCompensationBillService {
     private ReturnCompensationBillDao returnCompensationBillDao;
     @Autowired
     private RtcbItemDao rtcbItemDao;
+
+    public boolean addReturnCompensationBill(ReturnCompensationBill returnCompensationBill) {
+        List<RtcbItem> rtcbItems = returnCompensationBill.getRtcbItems();
+        if(rtcbItems == null||rtcbItems.size() == 0) {
+            return false;
+        }
+        String id = generateID();
+        returnCompensationBill.setId(id);
+        for (RtcbItem rtcbItem:rtcbItems) {
+            rtcbItem.setRtcbId(id);
+            rtcbItem.setProductionVersion(StringUtil.UTF8ToGBK(rtcbItem.getProductionVersion()));
+            rtcbItem.setUnit(StringUtil.UTF8ToGBK(rtcbItem.getUnit()));
+            rtcbItem.setNotes(StringUtil.UTF8ToGBK(rtcbItem.getNotes()));
+            rtcbItem.setProcess(StringUtil.UTF8ToGBK(rtcbItem.getProcess()));
+        }
+        returnCompensationBill.setErpCreatorname(StringUtil.UTF8ToGBK(returnCompensationBill.getErpCreatorname()));
+        returnCompensationBill.setCname(StringUtil.UTF8ToGBK(returnCompensationBill.getCname()));
+        returnCompensationBill.setCreateTs(new Timestamp(System.currentTimeMillis()));
+        returnCompensationBill.setState("ONCREATE");
+        returnCompensationBill.setPrinted("1");
+
+        returnCompensationBillDao.addReturnCompensationBill(returnCompensationBill);
+        rtcbItemDao.addRtcbItems(rtcbItems);
+        return true;
+    }
 
     public List<ReturnCompensationBill> getSimpleReturnCompensationBills(String CID, Integer page, Integer number,
                                                                          Timestamp startTime,Timestamp endTime,String state,
@@ -68,6 +95,20 @@ public class ReturnCompensationBillService {
         }
         returnCompensationBill.setRtcbItems(rtcbItems);
         return returnCompensationBill;
+    }
+
+    private synchronized String generateID() {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyMMdd");
+        String previous = simpleDateFormat.format(timestamp);
+        String maxID = returnCompensationBillDao.getMaxID(previous);
+        if(maxID == null) {
+            return "RZ"+previous+"00001";
+        }
+        Integer number = Integer.parseInt(maxID.split(previous)[1]);
+        number++;
+        String newID = "RZ" + previous + String.format("%05d", number);
+        return newID;
     }
 
 }

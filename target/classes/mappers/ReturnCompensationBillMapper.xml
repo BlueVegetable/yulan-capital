@@ -16,6 +16,20 @@
         <result column="PRINTED" property="printed" jdbcType="CHAR" />
     </resultMap>
 
+    <insert id="addReturnCompensationBill" parameterType="ReturnCompensationBill">
+        insert into RETURNCOMPENSATIONBILL
+        values
+        (#{id},#{erpCreator},#{erpCreatorname},#{createTs},#{cid,jdbcType=VARCHAR},
+        #{cname,jdbcType=VARCHAR},#{reassureTs,jdbcType=TIMESTAMP},
+        #{sendbackReason,jdbcType=VARCHAR},#{itemCount,jdbcType=NUMERIC},
+        #{itemMaxIndex,jdbcType=NUMERIC},#{state,jdbcType=VARCHAR},
+        #{printed,jdbcType=CHAR})
+    </insert>
+
+    <select id="getMaxID" parameterType="String" resultType="String">
+        select * from (select id from RETURNCOMPENSATIONBILL where id like concat(concat('RZ',#{previous}),'%') order by id desc) where rownum=1
+    </select>
+
     <select id="getReturnCompensationBill" parameterType="String" resultType="ReturnCompensationBill">
         select * from RETURNCOMPENSATIONBILL where id = #{id}
     </select>

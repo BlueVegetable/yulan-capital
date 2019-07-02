@@ -7,6 +7,10 @@ import java.util.Map;
 
 public interface ReturnCompensationBillDao {
 
+    int addReturnCompensationBill(ReturnCompensationBill returnCompensationBill);
+
+    String getMaxID(String previous);
+
     ReturnCompensationBill getReturnCompensationBill(String id);
 
     List<ReturnCompensationBill> getSimpleReturnCompensationBills(Map paramters);

@@ -7,16 +7,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="303e36ca-4267-45f5-b8f6-4628e9fe477b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yulan/controller/ReturnCompensationBillController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yulan/controller/ReturnCompensationBillController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yulan/dao/ReturnCompensationBillDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yulan/dao/ReturnCompensationBillDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yulan/dao/RtcbItemDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yulan/dao/RtcbItemDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yulan/pojo/ReturnCompensationBill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yulan/pojo/ReturnCompensationBill.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yulan/service/ReturnCompensationBillService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yulan/service/ReturnCompensationBillService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/ReturnCompensationBillMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/ReturnCompensationBillMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/RtcbItemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/RtcbItemMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/PaymentBillTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/PaymentBillTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yulan/controller/ReturnCompensationBillController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yulan/controller/ReturnCompensationBillController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yulan/dao/ReturnCompensationBillDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yulan/dao/ReturnCompensationBillDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yulan/dao/RtcbItemDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yulan/dao/RtcbItemDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yulan/pojo/ReturnCompensationBill.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yulan/pojo/ReturnCompensationBill.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yulan/service/ReturnCompensationBillService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yulan/service/ReturnCompensationBillService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mappers/ReturnCompensationBillMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mappers/ReturnCompensationBillMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mappers/RtcbItemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mappers/RtcbItemMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/PaymentBillTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/PaymentBillTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/yulan-capital/WEB-INF/classes/com/yulan/controller/ReturnCompensationBillController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/yulan-capital/WEB-INF/classes/com/yulan/controller/ReturnCompensationBillController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/yulan-capital/WEB-INF/classes/com/yulan/dao/ReturnCompensationBillDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/yulan-capital/WEB-INF/classes/com/yulan/dao/ReturnCompensationBillDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/yulan-capital/WEB-INF/classes/com/yulan/dao/RtcbItemDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/yulan-capital/WEB-INF/classes/com/yulan/dao/RtcbItemDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/yulan-capital/WEB-INF/classes/com/yulan/pojo/ReturnCompensationBill.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/yulan-capital/WEB-INF/classes/com/yulan/pojo/ReturnCompensationBill.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/yulan-capital/WEB-INF/classes/com/yulan/service/ReturnCompensationBillService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/yulan-capital/WEB-INF/classes/com/yulan/service/ReturnCompensationBillService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/yulan-capital/WEB-INF/classes/mappers/ReturnCompensationBillMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/yulan-capital/WEB-INF/classes/mappers/ReturnCompensationBillMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/yulan-capital/WEB-INF/classes/mappers/RtcbItemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/yulan-capital/WEB-INF/classes/mappers/RtcbItemMapper.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -34,46 +48,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/controller/ReturnCompensationBillController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="38" column="139" selection-start-line="38" selection-start-column="139" selection-end-line="38" selection-end-column="139" />
+            <state relative-caret-position="96">
+              <caret line="23" column="46" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#addReturnCompensationBill#0;class#ReturnCompensationBillController#0" />
+                <element signature="method#getReturnCompensationBills#0;class#ReturnCompensationBillController#0" />
                 <element signature="method#getReturnCompensationBillByID#0;class#ReturnCompensationBillController#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/dao/ReturnCompensationBillDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="13" column="43" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/service/ReturnCompensationBillService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="47">
-              <caret line="46" column="84" lean-forward="true" selection-start-line="46" selection-start-column="84" selection-end-line="46" selection-end-column="84" />
+            <state relative-caret-position="215">
+              <caret line="43" column="44" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="44" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="method#getSimpleReturnCompensationBills#0;class#ReturnCompensationBillService#0" />
+                <element signature="method#countSimpleReturnCompensationBills#0;class#ReturnCompensationBillService#0" />
                 <element signature="method#getReturnCompensationBill#0;class#ReturnCompensationBillService#0" />
+                <element signature="method#generateID#0;class#ReturnCompensationBillService#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/ReturnCompensationBillMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
+            <state relative-caret-position="120">
+              <caret line="21" column="58" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
               <folding>
                 <element signature="n#select#0;n#mapper#0;n#!!top" />
               </folding>
@@ -104,14 +110,14 @@
         <option value="$PROJECT_DIR$/src/main/resources/mappers/PaymentBillMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/yulan/pojo/PaymentBill.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yulan/pojo/RtcbItem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yulan/pojo/ReturnCompensationBill.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yulan/dao/RtcbItemDao.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mappers/RtcbItemMapper.xml" />
-        <option value="$PROJECT_DIR$/src/test/PaymentBillTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yulan/dao/ReturnCompensationBillDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yulan/service/ReturnCompensationBillService.java" />
+        <option value="$PROJECT_DIR$/src/test/PaymentBillTest.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mappers/RtcbItemMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/yulan/controller/ReturnCompensationBillController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mappers/ReturnCompensationBillMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yulan/pojo/ReturnCompensationBill.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yulan/service/ReturnCompensationBillService.java" />
       </list>
     </option>
   </component>
@@ -199,6 +205,15 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="yulan" type="462c0819:PsiDirectoryNode" />
               <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yulan-capital" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yulan-capital" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="yulan" type="462c0819:PsiDirectoryNode" />
+              <item name="pojo" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="yulan-capital" type="b2602c69:ProjectViewProjectNode" />
@@ -394,50 +409,50 @@
       <workItem from="1561906701230" duration="2057000" />
       <workItem from="1561990385722" duration="3586000" />
       <workItem from="1561998340517" duration="5488000" />
-      <workItem from="1562042336341" duration="5333000" />
+      <workItem from="1562042336341" duration="13063000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PaymentBillTest_test1 - 2019.06.30 at 23h 29m 08s.xml">
-      <configuration name="PaymentBillTest.test1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PaymentBillTest_test1 - 2019.06.30 at 23h 30m 28s.xml">
-      <configuration name="PaymentBillTest.test1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PaymentBillTest_test1 - 2019.06.30 at 23h 30m 52s.xml">
-      <configuration name="PaymentBillTest.test1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PaymentBillTest_test1 - 2019.06.30 at 23h 31m 23s.xml">
-      <configuration name="PaymentBillTest.test1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PaymentBillTest_test2 - 2019.07.02 at 00h 36m 23s.xml">
-      <configuration name="PaymentBillTest.test2" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PaymentBillTest_test2 - 2019.07.02 at 00h 37m 00s.xml">
-      <configuration name="PaymentBillTest.test2" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PaymentBillTest_test2 - 2019.07.02 at 00h 37m 40s.xml">
-      <configuration name="PaymentBillTest.test2" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PaymentBillTest_test2 - 2019.07.02 at 00h 40m 33s.xml">
-      <configuration name="PaymentBillTest.test2" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PaymentBillTest_test2 - 2019.07.02 at 00h 40m 56s.xml">
-      <configuration name="PaymentBillTest.test2" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="PaymentBillTest_test2 - 2019.07.02 at 00h 41m 12s.xml">
+      <configuration name="PaymentBillTest.test2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PaymentBillTest_test2 - 2019.07.02 at 16h 14m 40s.xml">
+      <configuration name="PaymentBillTest.test2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PaymentBillTest_test2 - 2019.07.02 at 16h 31m 17s.xml">
+      <configuration name="PaymentBillTest.test2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PaymentBillTest_test2 - 2019.07.02 at 16h 31m 55s.xml">
+      <configuration name="PaymentBillTest.test2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PaymentBillTest_test2 - 2019.07.02 at 16h 32m 27s.xml">
+      <configuration name="PaymentBillTest.test2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PaymentBillTest_test2 - 2019.07.02 at 16h 36m 55s.xml">
+      <configuration name="PaymentBillTest.test2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PaymentBillTest_test2 - 2019.07.02 at 16h 38m 46s.xml">
+      <configuration name="PaymentBillTest.test2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PaymentBillTest_test2 - 2019.07.02 at 16h 39m 48s.xml">
+      <configuration name="PaymentBillTest.test2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PaymentBillTest_test2 - 2019.07.02 at 16h 40m 56s.xml">
+      <configuration name="PaymentBillTest.test2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PaymentBillTest_test2 - 2019.07.02 at 16h 41m 33s.xml">
       <configuration name="PaymentBillTest.test2" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16464000" />
+    <option name="totallyTimeSpent" value="24194000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.26136363" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26136363" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -447,8 +462,8 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.19557823" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.15476191" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.0867347" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.35884354" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -513,24 +528,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/dao/PaymentBillDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="34" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/PaymentBillMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -541,30 +542,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/pojo/RtcbItem.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/utils/StringUtil.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/dao/PaymentBillDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1280">
-          <caret line="100" column="20" lean-forward="true" selection-start-line="100" selection-start-column="20" selection-end-line="100" selection-end-column="20" />
-          <folding>
-            <element signature="method#setProductionVersion#0;class#RtcbItem#0" />
-          </folding>
+        <state relative-caret-position="100">
+          <caret line="5" column="34" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/dao/RtcbItemDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="20" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="20" />
+        <state relative-caret-position="220">
+          <caret line="11" column="55" lean-forward="true" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/RtcbItemMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="25" column="47" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/dao/ReturnCompensationBillDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="35" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/PaymentBillTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="34" column="71" selection-start-line="32" selection-start-column="8" selection-end-line="34" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/PaymentBillMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/controller/ReturnCompensationBillController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="23" column="46" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#addReturnCompensationBill#0;class#ReturnCompensationBillController#0" />
+            <element signature="method#getReturnCompensationBills#0;class#ReturnCompensationBillController#0" />
+            <element signature="method#getReturnCompensationBillByID#0;class#ReturnCompensationBillController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/pojo/ReturnCompensationBill.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="19" column="37" lean-forward="true" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+        <state relative-caret-position="89">
+          <caret line="78" column="18" selection-start-line="78" selection-start-column="18" selection-end-line="78" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#setErpCreatorname#0;class#ReturnCompensationBill#0" />
@@ -574,64 +622,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/utils/StringUtil.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/RtcbItemMapper.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/pojo/RtcbItem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/PaymentBillTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        <state relative-caret-position="252">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="26" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/controller/ReturnCompensationBillController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="38" column="139" selection-start-line="38" selection-start-column="139" selection-end-line="38" selection-end-column="139" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getReturnCompensationBillByID#0;class#ReturnCompensationBillController#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/service/ReturnCompensationBillService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="47">
-          <caret line="46" column="84" lean-forward="true" selection-start-line="46" selection-start-column="84" selection-end-line="46" selection-end-column="84" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getReturnCompensationBill#0;class#ReturnCompensationBillService#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/dao/ReturnCompensationBillDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="13" column="43" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#setProductionVersion#0;class#RtcbItem#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/ReturnCompensationBillMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
+        <state relative-caret-position="120">
+          <caret line="21" column="58" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
           <folding>
             <element signature="n#select#0;n#mapper#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/service/ReturnCompensationBillService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="43" column="44" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="44" />
+          <folding>
+            <element signature="method#getSimpleReturnCompensationBills#0;class#ReturnCompensationBillService#0" />
+            <element signature="method#countSimpleReturnCompensationBills#0;class#ReturnCompensationBillService#0" />
+            <element signature="method#getReturnCompensationBill#0;class#ReturnCompensationBillService#0" />
+            <element signature="method#generateID#0;class#ReturnCompensationBillService#0" />
           </folding>
         </state>
       </provider>

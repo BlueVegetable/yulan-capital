@@ -1,6 +1,7 @@
 package com.yulan.pojo;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 public class ReturnCompensationBill {
@@ -8,10 +9,10 @@ public class ReturnCompensationBill {
     private String id;
     private String erpCreator;
     private String erpCreatorname;
-    private Date createTs;
+    private Timestamp createTs;
     private String cid;
     private String cname;
-    private Date reassureTs;
+    private Timestamp reassureTs;
     private String sendbackReason;
     private Short itemCount;
     private Short itemMaxIndex;
@@ -43,11 +44,11 @@ public class ReturnCompensationBill {
         this.erpCreatorname = erpCreatorname == null ? null : erpCreatorname.trim();
     }
 
-    public Date getCreateTs() {
+    public Timestamp getCreateTs() {
         return createTs;
     }
 
-    public void setCreateTs(Date createTs) {
+    public void setCreateTs(Timestamp createTs) {
         this.createTs = createTs;
     }
 
@@ -67,11 +68,11 @@ public class ReturnCompensationBill {
         this.cname = cname == null ? null : cname.trim();
     }
 
-    public Date getReassureTs() {
+    public Timestamp getReassureTs() {
         return reassureTs;
     }
 
-    public void setReassureTs(Date reassureTs) {
+    public void setReassureTs(Timestamp reassureTs) {
         this.reassureTs = reassureTs;
     }
 

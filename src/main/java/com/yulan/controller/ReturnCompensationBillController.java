@@ -5,6 +5,7 @@ import com.yulan.service.ReturnCompensationBillService;
 import com.yulan.utils.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,6 +19,12 @@ public class ReturnCompensationBillController {
 
     @Autowired
     private ReturnCompensationBillService returnCompensationBillService;
+
+    @ResponseBody
+    @RequestMapping("addReturnCompensationBill")
+    public Map addReturnCompensationBill(@RequestBody ReturnCompensationBill returnCompensationBill) {
+        return Response.getResponseMap(0,"",returnCompensationBillService.addReturnCompensationBill(returnCompensationBill));
+    }
 
     @ResponseBody
     @RequestMapping("getReturnCompensationBills")

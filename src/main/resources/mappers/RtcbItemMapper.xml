@@ -13,6 +13,22 @@
         <result column="PROCESS" property="process" jdbcType="VARCHAR" />
     </resultMap>
 
+    <insert id="addRtcbItems" parameterType="Map">
+        insert into RTCB_ITEM
+        (RTCB_ID,ITEM_INDEX,ITEM_NO,PRODUCTION_VERSION,UNIT,QTY,TOTALMONEY,NOTES,PROCESS)
+        (
+        <foreach collection="rtcbItems" item="rtcbItem" separator="union all">
+            select
+            #{rtcbItem.rtcbId,jdbcType=VARCHAR},#{rtcbItem.itemIndex,jdbcType=NUMERIC},
+            #{rtcbItem.itemNo,jdbcType=VARCHAR},#{rtcbItem.productionVersion,jdbcType=VARCHAR},
+            #{rtcbItem.unit,jdbcType=VARCHAR},#{rtcbItem.qty,jdbcType=NUMERIC},
+            #{rtcbItem.totalmoney,jdbcType=NUMERIC},#{rtcbItem.notes,jdbcType=VARCHAR},
+            #{rtcbItem.process,jdbcType=VARCHAR}
+            from dual
+        </foreach>
+        )
+    </insert>
+
     <select id="getRtcbItemsByRtcbID" parameterType="String" resultMap="RtcbItemMap">
         select * from RTCB_ITEM t where rtcb_id = #{rtcbID} order by item_index
     </select>
