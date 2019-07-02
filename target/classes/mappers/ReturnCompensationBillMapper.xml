@@ -22,15 +22,50 @@
 
     <select id="getSimpleReturnCompensationBills" parameterType="Map" resultMap="BaseResultMap">
         SELECT * FROM (SELECT ROWNUM AS rowno, t.* FROM RETURNCOMPENSATIONBILL t
-        where ROWNUM &lt; #{end} and cid = #{CID}
-        <if test="startTime != null">
-            and CREATE_TS between #{startTime} and #{endTime}
+        where ROWNUM &lt; #{end}
+        <if test="CID != null">
+            and cid = #{CID}
         </if>
         <if test="state != null">
             and state = #{state}
         </if>
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="createName != null">
+            and ERP_CREATORNAME like concat(concat('%',#{createName}),'%')
+        </if>
+        <if test="cName != null">
+            and CNAME like concat(concat('%',#{cName}),'%')
+        </if>
+        <if test="startTime != null">
+            and CREATE_TS between #{startTime} and #{endTime}
+        </if>
         order by id)
         table_alias WHERE table_alias.rowno &gt;= #{start}
+    </select>
+
+    <select id="countSimpleReturnCompensationBills" parameterType="Map" resultType="Long">
+        SELECT count(*) FROM RETURNCOMPENSATIONBILL
+        where 1=1
+        <if test="CID != null">
+            and cid = #{CID}
+        </if>
+        <if test="state != null">
+            and state = #{state}
+        </if>
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="createName != null">
+            and ERP_CREATORNAME like concat(concat('%',#{createName}),'%')
+        </if>
+        <if test="cName != null">
+            and CNAME like concat(concat('%',#{cName}),'%')
+        </if>
+        <if test="startTime != null">
+            and CREATE_TS between #{startTime} and #{endTime}
+        </if>
     </select>
 
 </mapper>

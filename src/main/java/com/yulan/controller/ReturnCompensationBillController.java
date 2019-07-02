@@ -21,15 +21,23 @@ public class ReturnCompensationBillController {
 
     @ResponseBody
     @RequestMapping("getReturnCompensationBills")
-    public Map<String,Object> getReturnCompensationBills(@RequestParam("CID")String CID,@RequestParam("page")Integer page,
-                                                         @RequestParam("number")Integer number,@RequestParam("startDate")String startDate,
-                                                         @RequestParam("endDate")String endDate,@RequestParam("state")String state) {
+    public Map<String,Object> getReturnCompensationBills
+            (@RequestParam(value = "CID",required = false)String CID,
+             @RequestParam(value = "createName",required = false)String createName,
+             @RequestParam(value = "cName",required = false)String cName,
+             @RequestParam("page")Integer page, @RequestParam("number")Integer number,
+             @RequestParam(value = "startDate",required = false)String startDate,
+             @RequestParam(value = "endDate",required = false)String endDate,
+             @RequestParam(value = "state",required = false)String state) {
         Timestamp startTime = null,endTime = null;
         if(startDate != null)
         startTime = Timestamp.valueOf(startDate + " 00:00:00");
         if(endDate != null)
         endTime = Timestamp.valueOf(endDate + " 23:59:59");
-        return Response.getResponseMap(0,"",returnCompensationBillService.getSimpleReturnCompensationBills(CID,page,number,startTime,endTime,state));
+        Map result = Response.getResponseMap(0,"",returnCompensationBillService.
+                getSimpleReturnCompensationBills(CID,page,number,startTime,endTime,state,createName,cName));
+        result.put("count",returnCompensationBillService.countSimpleReturnCompensationBills(CID,startTime,endTime,state,createName,cName));
+        return result;
     }
 
     @ResponseBody

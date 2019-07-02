@@ -11,4 +11,6 @@ public interface ReturnCompensationBillDao {
 
     List<ReturnCompensationBill> getSimpleReturnCompensationBills(Map paramters);
 
+    Long countSimpleReturnCompensationBills(Map parameters);
+
 }

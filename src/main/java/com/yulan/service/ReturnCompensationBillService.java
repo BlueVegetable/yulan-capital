@@ -22,7 +22,8 @@ public class ReturnCompensationBillService {
     private RtcbItemDao rtcbItemDao;
 
     public List<ReturnCompensationBill> getSimpleReturnCompensationBills(String CID, Integer page, Integer number,
-                                                                         Timestamp startTime,Timestamp endTime,String state) {
+                                                                         Timestamp startTime,Timestamp endTime,String state,
+                                                                         String createName,String cName) {
         Integer start = (page-1)*number+1;
         Integer end = start + number;
         Map parameters = new HashMap();
@@ -32,12 +33,26 @@ public class ReturnCompensationBillService {
         parameters.put("startTime",startTime);
         parameters.put("endTime",endTime);
         parameters.put("state",state);
+        parameters.put("createName",StringUtil.UTF8ToGBK(createName));
+        parameters.put("cName",StringUtil.UTF8ToGBK(cName));
         List<ReturnCompensationBill> result = returnCompensationBillDao.getSimpleReturnCompensationBills(parameters);
         for (ReturnCompensationBill inline:result) {
             inline.setErpCreatorname(StringUtil.GBKToUTF8(inline.getErpCreatorname()));
             inline.setCname(StringUtil.GBKToUTF8(inline.getCname()));
         }
         return result;
+    }
+
+    public Long countSimpleReturnCompensationBills(String CID, Timestamp startTime,Timestamp endTime,String state,
+                                                   String createName,String cName) {
+        Map parameters = new HashMap();
+        parameters.put("CID",CID);
+        parameters.put("startTime",startTime);
+        parameters.put("endTime",endTime);
+        parameters.put("state",state);
+        parameters.put("createName",StringUtil.UTF8ToGBK(createName));
+        parameters.put("cName",StringUtil.UTF8ToGBK(cName));
+        return returnCompensationBillDao.countSimpleReturnCompensationBills(parameters);
     }
 
     public ReturnCompensationBill getReturnCompensationBill(String id) {
