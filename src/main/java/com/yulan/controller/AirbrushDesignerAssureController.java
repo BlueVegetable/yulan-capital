@@ -1,5 +1,6 @@
 package com.yulan.controller;
 
+import com.yulan.pojo.AirbrushDesignerAssure;
 import com.yulan.service.AirbrushDesignerAssureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,6 +39,30 @@ public class AirbrushDesignerAssureController {
         int lastNum=page+limit-1;
 
         return airbrushDesignerAssureService.getAirbrushDesignerAssure(cid,startDate,endDate, state, page, lastNum);
+    }
+
+    /**
+     * 修改委托喷绘书接口
+     * @param airbrushDesignerAssure
+     * @return
+     */
+    @RequestMapping(value = "updateAirbrushDesignerAssure")
+    @ResponseBody
+    public Map updateAirbrushDesignerAssure(@RequestBody AirbrushDesignerAssure airbrushDesignerAssure){
+
+        return airbrushDesignerAssureService.updateAirbrushDesignerAssure(airbrushDesignerAssure);
+    }
+
+    /**
+     * 删除委托喷绘书接口
+     * @param data
+     * @return
+     */
+    @RequestMapping(value = "deleteAirbrushDesignerAssure")
+    @ResponseBody
+    public Map deleteAirbrushDesignerAssure(@RequestBody Map<String,Object> data){
+        String id = (String)data.get("id");
+        return airbrushDesignerAssureService.deleteAirbrushDesignerAssure(id);
     }
 
 }
