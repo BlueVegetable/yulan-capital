@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yulan.dao.AirbrushDesignerAssureDao">
+    <resultMap id="AirbrushDesignerAssureMap" type="com.yulan.pojo.AirbrushDesignerAssure" >
+        <id column="ID" property="id" jdbcType="CHAR" />
+        <result column="ERP_CREATOR" property="erpCreator" jdbcType="VARCHAR" />
+        <result column="CREATE_TS" property="createTs" jdbcType="TIMESTAMP" />
+        <result column="CID" property="cid" jdbcType="VARCHAR" />
+        <result column="CNAME" property="cname" jdbcType="VARCHAR" />
+        <result column="CUSTOMER_AGENT" property="customerAgent" jdbcType="VARCHAR" />
+        <result column="OFFICE_TEL" property="officeTel" jdbcType="VARCHAR" />
+        <result column="REASSURE_TS" property="reassureTs" jdbcType="TIMESTAMP" />
+        <result column="SENDBACK_REASON" property="sendbackReason" jdbcType="VARCHAR" />
+        <result column="IMAGE_COUNT" property="imageCount" jdbcType="DECIMAL" />
+        <result column="IMAGE_MAX_INDEX" property="imageMaxIndex" jdbcType="DECIMAL" />
+        <result column="STATE" property="state" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="getAirbrushDesignerAssure" parameterType="java.util.Map" resultMap="AirbrushDesignerAssureMap">
+        select * from(
+        select rownum rm, c.*  from
+        (
+        select t.* ,COUNT(*) OVER () TOTAL from AIRBRUSHDESIGNREASSURE t
+        where t.create_ts &gt;= to_date(#{START_DATE},'yyyy/mm/dd hh24:mi:ss')
+        and t.create_ts &lt;= to_date(#{END_DATE},'yyyy/mm/dd hh24:mi:ss')
+        and t.cid = #{CID}
+        <if test="STATE != null">
+        and t.state = #{STATE}
+        </if>
+        order by t.create_ts asc
+        ) c)tm
+        <if test="start!=null">
+            where rm &gt;= #{start} and rm &lt;= #{number}
+        </if>
+    </select>
+
+</mapper>
