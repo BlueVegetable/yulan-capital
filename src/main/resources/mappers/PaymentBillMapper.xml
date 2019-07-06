@@ -2,8 +2,38 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yulan.dao.PaymentBillDao">
 
+    <resultMap id="PaymentBillMap" type="PaymentBill" >
+        <id column="ID" property="id" jdbcType="CHAR" />
+        <result column="CID" property="cid" jdbcType="VARCHAR" />
+        <result column="CNAME" property="cname" jdbcType="VARCHAR" />
+        <result column="CREATE_TS" property="createTs" jdbcType="TIMESTAMP" />
+        <result column="YULAN_BANK" property="yulanBank" jdbcType="VARCHAR" />
+        <result column="PAYER_NAME" property="payerName" jdbcType="VARCHAR" />
+        <result column="PAY_AMOUNT" property="payAmount" jdbcType="DECIMAL" />
+        <result column="PAY_DATE" property="payDate" jdbcType="TIMESTAMP" />
+        <result column="IMG_FILE_NAME" property="imgFileName" jdbcType="VARCHAR" />
+        <result column="SUBMIT_TS" property="submitTs" jdbcType="TIMESTAMP" />
+        <result column="MEMO" property="memo" jdbcType="VARCHAR" />
+        <result column="CANCEL_TS" property="cancelTs" jdbcType="TIMESTAMP" />
+        <result column="SENDBACK_TS" property="sendbackTs" jdbcType="TIMESTAMP" />
+        <result column="SENDBACK_REASON" property="sendbackReason" jdbcType="VARCHAR" />
+        <result column="ERP_PROCESS_TS" property="erpProcessTs" jdbcType="TIMESTAMP" />
+        <result column="ERP_PROCESS_OP" property="erpProcessOp" jdbcType="VARCHAR" />
+        <result column="STATE" property="state" jdbcType="CHAR" />
+        <result column="PAYER_ACCOUNT" property="payerAccount" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="PaymentBillList" >
+    ID, CID, CNAME, CREATE_TS, YULAN_BANK, PAYER_NAME, PAY_AMOUNT, PAY_DATE, IMG_FILE_NAME,
+    SUBMIT_TS, MEMO, CANCEL_TS, SENDBACK_TS, SENDBACK_REASON, ERP_PROCESS_TS, ERP_PROCESS_OP,
+    STATE, PAYER_ACCOUNT
+  </sql>
+
     <select id="getPaymentBillByID" parameterType="String" resultType="PaymentBill">
         select * from payment_bill where id = #{id}
+    </select>
+
+    <select id="findPaymentBillIds" parameterType="String" resultType="Map">
+        select ID from payment_bill t where =t.cid #{cid} and t.id '%'||#{idDate}||'%'
     </select>
 
 </mapper>
