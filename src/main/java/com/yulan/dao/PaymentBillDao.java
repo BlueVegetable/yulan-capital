@@ -12,8 +12,15 @@ public interface PaymentBillDao {
     /**
      * 通过日期和cid获取id集合
      * @param idDate
-     * @param companyid
+     *
      * @return
      */
-    List<Map<String,Object>> findPaymentBillIds(@Param("idDate")String idDate,@Param("cid")String companyid);
+    List<Map<String,Object>> findPaymentBillIds(@Param("idDate")String idDate);
+
+    /**
+     * 新增汇款凭证
+     * @param paymentBill
+     * @return
+     */
+    boolean insertPaymentBill(PaymentBill paymentBill);
 }

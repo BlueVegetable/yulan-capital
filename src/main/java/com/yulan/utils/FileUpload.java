@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,11 +15,11 @@ import java.util.Map;
 public class FileUpload {
 
     private final static int LENGTH=1024;
-    /**
-     * 本地路径
-     */
-    private final static String PATH = "H:\\upload";
+
+    private final static String PATH = "H:\\upload";//本地路径
+//    private final static String PATH = "D:\\application\\apache-tomcat-main\\upload";//服务器路劲
     private final static String PaymentBill_PATH = "/paymentBill-image/";//保存银行汇款图
+
 
 
     public static Map<String,Object> copyFile(MultipartFile file, String path, String fileName) {
@@ -27,7 +28,8 @@ public class FileUpload {
         //      String fileName = System.currentTimeMillis()+"-"+file.hashCode()+"-"+(int)(100000000000000000L*Math.random())+"."+typeValue;
         //     String fileName = file.getOriginalFilename();
         String filePath = path+fileName + "."+ typeValue;
-        String code = "SUCCESS";
+        Integer code = 0;
+        String msg="SUCCESS";
 
         InputStream is = null;
         OutputStream os = null;
@@ -42,7 +44,8 @@ public class FileUpload {
                 os.write(buffer,0,size);
             }
         } catch (IOException e) {
-            code = "FAILED";
+            code = 1;
+            msg="FALSE";
             e.printStackTrace();
         } finally {
             try {
@@ -62,9 +65,36 @@ public class FileUpload {
 
         Map<String,Object> result = new HashMap<>(4);
         result.put("code",code);
-        result.put("fileName",fileName + "." + typeValue);
+        result.put("msg",msg);
+        result.put("sqlfileName",fileName + "." + typeValue);
         result.put("filePath",filePath);
         result.put("fileTypecopyImg",type);
         return result;
     }
+
+    public static Map<String,Object> copyPaymentBillImg(MultipartFile file,String fileName) {
+        Map<String,Object> result = copyFile(file,PATH + PaymentBill_PATH ,fileName);
+        return result;
+    }
+
+    public static Map deleteFile(String deletePath) {
+        Map result=new HashMap();
+        String Msg="SUCCESS";
+        Integer code=0;
+        Path path = Paths.get(deletePath);
+        if(Files.exists(path)) {
+            try {
+                Files.delete(path);
+
+            } catch (IOException e) {
+                Msg="FALSE";
+                code=1;
+                e.printStackTrace();
+            }
+        }
+        result.put("msg",Msg);
+        result.put("code",code);
+        return  result;
+    }
+
 }
