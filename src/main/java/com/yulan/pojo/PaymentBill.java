@@ -1,6 +1,7 @@
 package com.yulan.pojo;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class PaymentBill {
@@ -14,9 +15,9 @@ public class PaymentBill {
     private BigDecimal payAmount;
     private Date payDate;
     private String imgFileName;
-    private Date submitTs;
+    private Timestamp submitTs;
     private String memo;
-    private Date cancelTs;
+    private Timestamp cancelTs;
     private Date sendbackTs;
     private String sendbackReason;
     private Date erpProcessTs;
@@ -100,7 +101,7 @@ public class PaymentBill {
         return submitTs;
     }
 
-    public void setSubmitTs(Date submitTs) {
+    public void setSubmitTs(Timestamp submitTs) {
         this.submitTs = submitTs;
     }
 
@@ -116,7 +117,7 @@ public class PaymentBill {
         return cancelTs;
     }
 
-    public void setCancelTs(Date cancelTs) {
+    public void setCancelTs(Timestamp cancelTs) {
         this.cancelTs = cancelTs;
     }
 
