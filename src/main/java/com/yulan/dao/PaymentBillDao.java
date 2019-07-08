@@ -23,4 +23,17 @@ public interface PaymentBillDao {
      * @return
      */
     boolean insertPaymentBill(PaymentBill paymentBill);
+
+
+    /**
+     * 获取汇款凭证列表
+     * @param cid
+     * @param state
+     * @param beginTime
+     * @param finishTime
+     * @return
+     */
+    List<PaymentBill> getPaymentBillsbyCid(@Param("cid")String cid,@Param("state")String state,
+                                           @Param("beginTime") String beginTime,@Param("finishTime") String finishTime,
+                                           @Param("start")Integer start, @Param("number") Integer number);
 }

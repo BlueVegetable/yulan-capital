@@ -18,5 +18,12 @@ public interface PaymentBillService {
      */
     Map insertPaymentBill(Map<String,Object> map) throws UnsupportedEncodingException;
 
+    /**
+     * 获取汇款凭证列表
+     * @param map
+     * @return
+     */
+    Map getPaymentBillsbyCid(Map<String,Object> map) throws UnsupportedEncodingException;
+
 
 }

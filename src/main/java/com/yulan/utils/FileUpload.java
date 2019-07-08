@@ -79,6 +79,7 @@ public class FileUpload {
 
     public static Map deleteFile(String deletePath) {
         Map result=new HashMap();
+        deletePath=PATH+PaymentBill_PATH+deletePath;
         String Msg="SUCCESS";
         Integer code=0;
         Path path = Paths.get(deletePath);

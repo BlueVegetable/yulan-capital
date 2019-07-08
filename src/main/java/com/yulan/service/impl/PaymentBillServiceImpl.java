@@ -4,6 +4,7 @@ import com.yulan.dao.PaymentBillDao;
 import com.yulan.pojo.PaymentBill;
 import com.yulan.service.PaymentBillService;
 import com.yulan.utils.MapUtils;
+import com.yulan.utils.Response;
 import com.yulan.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -78,7 +79,56 @@ public class PaymentBillServiceImpl implements PaymentBillService {
         return result;
     }
 
+    @Override
+    public Map getPaymentBillsbyCid(Map<String, Object> map) throws UnsupportedEncodingException {
+        Map result=new HashMap();
+        String  cid=map.get("cid").toString();
+        String  state=map.get("state").toString();
+        String beginTime=map.get("beginTime").toString();
+        String finishTime=map.get("finishTime").toString();
+        Integer limit=(Integer) map.get("limit");
+        Integer page=(Integer) map.get("page");
+        if (beginTime.equals("") ||finishTime.equals("")){
+            beginTime=null;
+            finishTime=null;
+        }
+        if (cid.equals("")){
+            cid=null;
+        }
+        if (state.equals("")){
+            state=null;
+        }
+        Integer lastNum=null;
+        if(limit==null||page==null) {
+            page=null;
+            limit=null;
+        } else {
+            page=(page-1)*limit+1;
+            lastNum=page+limit-1;
+        }
 
+        List<PaymentBill> list=paymentBillDao.getPaymentBillsbyCid(cid,state,beginTime,finishTime,page,lastNum);
+        List<PaymentBill> dataList=new ArrayList<>();
+        for (PaymentBill pb :list){
+            Map<String,Object> pBmap=MapUtils.beanToMaplin(pb);
+            for (Map.Entry<String, Object> entry : pBmap.entrySet()) {//转码
+                if (entry.getValue() instanceof String) {
+                    String origin = StringUtil.getUtf8(String.valueOf(entry.getValue()));
+                    entry.setValue(origin);
+                }
+            }
+            PaymentBill paymentBill=MapUtils.mapToBean(pBmap,PaymentBill.class);
+            dataList.add(paymentBill);
+
+        }
+        result= Response.getResponseMap(0,"SUCCESS",dataList);
+
+
+
+
+
+        return result;
+    }
 
 
 }
