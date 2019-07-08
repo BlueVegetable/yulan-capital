@@ -23,7 +23,7 @@ public interface PaymentBillService {
      * @param map
      * @return
      */
-    Map getPaymentBillsbyCid(Map<String,Object> map) throws UnsupportedEncodingException;
+    Map getPayBills(Map<String,Object> map) throws UnsupportedEncodingException;
 
 
 }

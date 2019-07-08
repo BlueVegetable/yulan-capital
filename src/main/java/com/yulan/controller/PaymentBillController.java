@@ -46,4 +46,18 @@ public class PaymentBillController {
 
         return paymentBillService.insertPaymentBill(map);
     }
+
+    /**
+     * 获取银行汇款列表
+     * @param map
+     * @return
+     * @throws UnsupportedEncodingException
+     */
+
+    @RequestMapping("getPayBills")
+    @ResponseBody
+    public Map getPayBills(@RequestBody Map map ) throws UnsupportedEncodingException {
+
+        return paymentBillService.getPayBills(map);
+    }
 }

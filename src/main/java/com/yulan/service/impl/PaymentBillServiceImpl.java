@@ -80,7 +80,7 @@ public class PaymentBillServiceImpl implements PaymentBillService {
     }
 
     @Override
-    public Map getPaymentBillsbyCid(Map<String, Object> map) throws UnsupportedEncodingException {
+    public Map getPayBills(Map<String, Object> map) throws UnsupportedEncodingException {
         Map result=new HashMap();
         String  cid=map.get("cid").toString();
         String  state=map.get("state").toString();
@@ -107,21 +107,22 @@ public class PaymentBillServiceImpl implements PaymentBillService {
             lastNum=page+limit-1;
         }
 
+        int count =paymentBillDao.countPaybills(cid,state,beginTime,finishTime);
+
         List<PaymentBill> list=paymentBillDao.getPaymentBillsbyCid(cid,state,beginTime,finishTime,page,lastNum);
         List<PaymentBill> dataList=new ArrayList<>();
-        for (PaymentBill pb :list){
-            Map<String,Object> pBmap=MapUtils.beanToMaplin(pb);
-            for (Map.Entry<String, Object> entry : pBmap.entrySet()) {//转码
-                if (entry.getValue() instanceof String) {
-                    String origin = StringUtil.getUtf8(String.valueOf(entry.getValue()));
-                    entry.setValue(origin);
-                }
-            }
-            PaymentBill paymentBill=MapUtils.mapToBean(pBmap,PaymentBill.class);
-            dataList.add(paymentBill);
+        for (PaymentBill pb :list){//转码
+            pb.setCname(StringUtil.getUtf8(pb.getCname()));
+            pb.setYulanBank(StringUtil.getUtf8(pb.getYulanBank()));
+            pb.setPayerName(StringUtil.getUtf8(pb.getPayerName()));
+            pb.setMemo(StringUtil.getUtf8(pb.getMemo()));
+            pb.setSendbackReason(StringUtil.getUtf8(pb.getSendbackReason()));
+            dataList.add(pb);
+
 
         }
         result= Response.getResponseMap(0,"SUCCESS",dataList);
+        result.put("count",count);
 
 
 

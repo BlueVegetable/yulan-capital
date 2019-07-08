@@ -36,4 +36,14 @@ public interface PaymentBillDao {
     List<PaymentBill> getPaymentBillsbyCid(@Param("cid")String cid,@Param("state")String state,
                                            @Param("beginTime") String beginTime,@Param("finishTime") String finishTime,
                                            @Param("start")Integer start, @Param("number") Integer number);
+
+    /**
+     * 统计列表总数
+     * @param cid
+     * @param state
+     * @param beginTime
+     * @param finishTime
+     * @return
+     */
+    int countPaybills(@Param("cid")String cid,@Param("state")String state,@Param("beginTime") String beginTime,@Param("finishTime") String finishTime);
 }

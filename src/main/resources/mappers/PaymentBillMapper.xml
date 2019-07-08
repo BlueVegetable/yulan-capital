@@ -182,5 +182,23 @@
         where rownum &lt;= #{number})
         where rn &gt;=#{start}
     </select>
+    <select id="countPaybills" resultType="int">
+        select count(id) from   (select
+        <include refid="PaymentBillList" />
+
+        from PAYMENT_BILL t where 1=1
+
+
+        <if test="state!=null">
+            and state=#{state}
+        </if>
+        <if test="beginTime!=null">
+            and CREATE_TS between to_date(#{beginTime},'yyyy/mm/dd hh24:mi:ss') and to_date(#{finishTime},'yyyy/mm/dd hh24:mi:ss')
+        </if>
+        <if test="cid!=null">
+            and cid =#{cid}
+        </if>
+        )
+    </select>
 
 </mapper>
