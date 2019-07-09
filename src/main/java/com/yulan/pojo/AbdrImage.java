@@ -10,7 +10,17 @@ public class AbdrImage {
 
     private String memo;
 
+    private String imagePath;
+
     public AbdrImage() {
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     public String getAbdrId() {

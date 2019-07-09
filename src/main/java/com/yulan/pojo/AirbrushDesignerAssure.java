@@ -1,6 +1,7 @@
 package com.yulan.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 public class AirbrushDesignerAssure {
 
@@ -28,7 +29,27 @@ public class AirbrushDesignerAssure {
 
     private String state;
 
+    private int total;
+
+    private List<AbdrImage> abdrImage;
+
     public AirbrushDesignerAssure() {
+    }
+
+    public List<AbdrImage> getAbdrImage() {
+        return abdrImage;
+    }
+
+    public void setAbdrImage(List<AbdrImage> abdrImage) {
+        this.abdrImage = abdrImage;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
     }
 
     public String getId() {

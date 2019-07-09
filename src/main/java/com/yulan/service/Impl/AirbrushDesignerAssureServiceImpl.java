@@ -1,7 +1,9 @@
 package com.yulan.service.Impl;
 
+import com.yulan.dao.AbdrImageDao;
 import com.yulan.dao.AirbrushDesignerAssureDao;
 import com.yulan.dao.Web_userDao;
+import com.yulan.pojo.AbdrImage;
 import com.yulan.pojo.AirbrushDesignerAssure;
 import com.yulan.pojo.Web_user;
 import com.yulan.service.AirbrushDesignerAssureService;
@@ -20,6 +22,8 @@ public class AirbrushDesignerAssureServiceImpl implements AirbrushDesignerAssure
     private Web_userDao web_userDao;
     @Autowired
     private AirbrushDesignerAssureDao airbrushDesignerAssureDao;
+    @Autowired
+    private AbdrImageDao abdrImageDao;
 
     private StringUtil stringUtil;
 
@@ -43,6 +47,22 @@ public class AirbrushDesignerAssureServiceImpl implements AirbrushDesignerAssure
             if(null != airbrushDesignerAssure.getSendbackReason()){
                 airbrushDesignerAssure.setSendbackReason(stringUtil.GBKToUTF8(airbrushDesignerAssure.getSendbackReason()));
             }
+
+            List<AbdrImage> abdrImageList = abdrImageDao.getAbdrImage(airbrushDesignerAssure.getId());
+            for(int j = 0; j < abdrImageList.size(); j++){
+                AbdrImage abdrImage = abdrImageList.get(j);
+                if(null != abdrImage.getMemo()){
+                    abdrImage.setMemo(stringUtil.GBKToUTF8(abdrImage.getMemo()));
+                }
+                if(null != abdrImage.getImagePath()){
+                    abdrImage.setImagePath(stringUtil.GBKToUTF8(abdrImage.getImagePath()));
+                }
+                if(null != abdrImage.getSpecifications()){
+                    abdrImage.setSpecifications(stringUtil.GBKToUTF8(abdrImage.getSpecifications()));
+                }
+            }
+
+            airbrushDesignerAssure.setAbdrImage(abdrImageList);
         }
 
         map.put("airbrushDesignerAssureList",airbrushDesignerAssureList);
@@ -77,12 +97,24 @@ public class AirbrushDesignerAssureServiceImpl implements AirbrushDesignerAssure
     @Override
     public Map deleteAirbrushDesignerAssure(String id) {
         Map<String, Object> map = new HashMap<>();
-       if(airbrushDesignerAssureDao.deleteAirbrushDesignerAssure(id)){
-           map.put("msg","SUCCESS");
-           map.put("code", 0);
-       }else {
-           map.put("msg","FAILED");
-           map.put("code", 1);
+        AirbrushDesignerAssure airbrushDesignerAssure = airbrushDesignerAssureDao.getAirbrushDesignerAssureSingle(id);
+        if(airbrushDesignerAssure.getImageCount() == 0){
+            if (airbrushDesignerAssureDao.deleteAirbrushDesignerAssure(id) ) {
+                map.put("msg", "SUCCESS");
+                map.put("code", 0);
+            } else {
+                map.put("msg", "FAILED");
+                map.put("code", 1);
+            }
+
+        }else {
+            if (airbrushDesignerAssureDao.deleteAirbrushDesignerAssure(id) && abdrImageDao.deleteAbdrImage(id)) {
+                map.put("msg", "SUCCESS");
+                map.put("code", 0);
+            } else {
+                map.put("msg", "FAILED");
+                map.put("code", 1);
+            }
         }
         return map;
     }

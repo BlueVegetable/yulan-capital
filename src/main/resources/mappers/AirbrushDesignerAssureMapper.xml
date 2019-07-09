@@ -14,6 +14,7 @@
         <result column="IMAGE_COUNT" property="imageCount" jdbcType="DECIMAL" />
         <result column="IMAGE_MAX_INDEX" property="imageMaxIndex" jdbcType="DECIMAL" />
         <result column="STATE" property="state" jdbcType="VARCHAR" />
+        <result column="TOTAL" property="total" jdbcType="VARCHAR"/>
     </resultMap>
 
     <select id="getAirbrushDesignerAssure" parameterType="java.util.Map" resultMap="AirbrushDesignerAssureMap">
@@ -32,6 +33,10 @@
         <if test="start!=null">
             where rm &gt;= #{start} and rm &lt;= #{number}
         </if>
+    </select>
+
+    <select id="getAirbrushDesignerAssureSingle" parameterType="String" resultType="AirbrushDesignerAssure">
+         select * from AIRBRUSHDESIGNREASSURE t where t.id = #{id}
     </select>
 
     <update id="updateAirbrushDesignerAssure" parameterType="com.yulan.pojo.AirbrushDesignerAssure">
@@ -71,17 +76,14 @@
                 STATE = #{state,jdbcType=VARCHAR},
             </if>
         </set>
-        <if test="cid != null" >
-           where t.cid = #{cid}
+        <if test="id != null" >
+           where t.id = #{id}
         </if>
     </update>
 
    <delete id="deleteAirbrushDesignerAssure" parameterType="String">
        delete from AIRBRUSHDESIGNREASSURE t where t.id = #{id,jdbcType=CHAR}
    </delete>
-
-
-
 
 
 </mapper>
