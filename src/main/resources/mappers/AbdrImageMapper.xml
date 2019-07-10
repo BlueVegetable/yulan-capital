@@ -12,27 +12,41 @@
        select *  from ABDR_IMAGE t where t.ABDR_ID = #{abdrId,jdbcType=CHAR}
     </select>
 
-    <update id="updateAbdrImage" parameterType="com.yulan.pojo.AbdrImage">
-        update ABDR_IMAGE t
-        <set >
-        <if test="abdrId != null" >
-            ABDR_ID = #{abdrId,jdbcType=CHAR},
-        </if>
-        <if test="imageIndex != null" >
-            IMAGE_INDEX = #{imageIndex,jdbcType=DECIMAL},
-        </if>
-        <if test="specifications != null" >
-            SPECIFICATIONS = #{specifications,jdbcType=VARCHAR},
-        </if>
-        <if test="memo != null" >
-            MEMO = #{.memo,jdbcType=VARCHAR},
-        </if>
-        </set>
-    </update>
-
     <delete id="deleteAbdrImage" parameterType="String">
        delete from ABDR_IMAGE t where t.ABDR_ID = #{abdrId,jdbcType=CHAR}
    </delete>
+
+    <insert id="insertAbdrImage" parameterType="com.yulan.pojo.AbdrImage">
+        insert into ABDR_IMAGE
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="abdrId != null" >
+                ABDR_ID,
+            </if>
+            <if test="imageIndex != null" >
+                IMAGE_INDEX,
+            </if>
+            <if test="specifications != null" >
+                SPECIFICATIONS,
+            </if>
+            <if test="memo != null" >
+                MEMO,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="abdrId != null" >
+                #{abdrId,jdbcType=CHAR},
+            </if>
+            <if test="imageIndex != null" >
+                #{imageIndex,jdbcType=DECIMAL},
+            </if>
+            <if test="specifications != null" >
+                #{specifications,jdbcType=VARCHAR},
+            </if>
+            <if test="memo != null" >
+                #{memo,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
 
 
 </mapper>

@@ -8,5 +8,7 @@ public interface AbdrImageDao {
 
     List<AbdrImage> getAbdrImage(String abdrId);
 
+    boolean insertAbdrImage(AbdrImage abdrImage);
+
     boolean deleteAbdrImage(String abdrId);
 }

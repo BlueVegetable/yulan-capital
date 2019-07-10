@@ -94,6 +94,7 @@ public class AirbrushDesignerAssureServiceImpl implements AirbrushDesignerAssure
         return map;
     }
 
+
     @Override
     public Map deleteAirbrushDesignerAssure(String id) {
         Map<String, Object> map = new HashMap<>();
