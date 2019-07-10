@@ -1,4 +1,4 @@
-package com.yulan.service.impl;
+package com.yulan.service.Impl;
 
 import com.yulan.dao.PaymentBillDao;
 import com.yulan.pojo.PaymentBill;
