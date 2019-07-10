@@ -201,4 +201,8 @@
         )
     </select>
 
+    <select id="getPayBillContent" resultType="PaymentBill">
+        select <include refid="PaymentBillList" /> from PAYMENT_BILL t where id =#{id}
+    </select>
+
 </mapper>

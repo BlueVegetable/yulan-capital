@@ -97,5 +97,8 @@ public class FileUpload {
         result.put("code",code);
         return  result;
     }
+    public static String getPayBillRealPath(String fileName){
+        return PATH+PaymentBill_PATH+fileName;
+    }
 
 }

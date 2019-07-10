@@ -1,8 +1,9 @@
-package com.yulan.service.impl;
+package com.yulan.service.Impl;
 
 import com.yulan.dao.PaymentBillDao;
 import com.yulan.pojo.PaymentBill;
 import com.yulan.service.PaymentBillService;
+import com.yulan.utils.FileUpload;
 import com.yulan.utils.MapUtils;
 import com.yulan.utils.Response;
 import com.yulan.utils.StringUtil;
@@ -128,6 +129,42 @@ public class PaymentBillServiceImpl implements PaymentBillService {
 
 
 
+        return result;
+    }
+
+    @Override
+    public Map getPayBillContent(Map<String, Object> map) throws UnsupportedEncodingException {
+        String id=map.get("id").toString();
+        Map result=new HashMap();
+        PaymentBill paymentBill=paymentBillDao.getPayBillContent(id);
+        //转码
+        paymentBill.setCname(StringUtil.getUtf8(paymentBill.getCname()));
+        paymentBill.setYulanBank(StringUtil.getUtf8(paymentBill.getYulanBank()));
+        paymentBill.setPayerName(StringUtil.getUtf8(paymentBill.getPayerName()));
+        paymentBill.setMemo(StringUtil.getUtf8(paymentBill.getMemo()));
+        paymentBill.setSendbackReason(StringUtil.getUtf8(paymentBill.getSendbackReason()));
+
+        String fileName=paymentBill.getImgFileName();
+        String path= FileUpload.getPayBillRealPath(fileName);
+
+        //给前端返回真正的路径
+        paymentBill.setImgFileName(path);
+        result=Response.getResponseMap(0,"SUCCESS",paymentBill);
+
+
+        return result;
+    }
+
+    @Override
+    public Map updatePayBillState(Map<String, Object> map) {
+        String state=map.get("state").toString();
+        String id=map.get("id").toString();
+        Map result=new HashMap();
+        if (paymentBillDao.updatePayBillState(id,state)){
+            result=Response.getResponseMap(0,"SUCCESS","OK");
+        }else {
+            result=Response.getResponseMap(1,"FALSE","FALSE");
+        }
         return result;
     }
 
