@@ -1,4 +1,4 @@
-package com.yulan.service.Impl;
+package com.yulan.service.impl;
 
 import com.yulan.dao.AbdrImageDao;
 import com.yulan.dao.AirbrushDesignerAssureDao;
