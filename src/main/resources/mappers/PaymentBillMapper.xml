@@ -201,4 +201,12 @@
         )
     </select>
 
+    <select id="getPayBillContent" resultType="PaymentBill">
+        select <include refid="PaymentBillList" /> from PAYMENT_BILL t where id =#{id}
+    </select>
+
+    <update id="updatePayBillState" >
+        update  PAYMENT_BILL t set t.state =#{state} where t.id=#{id}
+    </update>
+
 </mapper>

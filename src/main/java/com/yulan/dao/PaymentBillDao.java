@@ -46,4 +46,21 @@ public interface PaymentBillDao {
      * @return
      */
     int countPaybills(@Param("cid")String cid,@Param("state")String state,@Param("beginTime") String beginTime,@Param("finishTime") String finishTime);
+
+
+    /**
+     * 查看汇款凭证详情
+     * @param id
+     * @return
+     */
+    PaymentBill getPayBillContent(@Param("id") String id);
+
+
+    /**
+     *更新汇款凭证状态
+     * @param id
+     * @param state
+     * @return
+     */
+    boolean updatePayBillState(@Param("id") String id,@Param("state")String state);
 }

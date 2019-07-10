@@ -60,4 +60,30 @@ public class PaymentBillController {
 
         return paymentBillService.getPayBills(map);
     }
+
+    /**
+     * 获取汇款详情
+     * @param map
+     * @return
+     * @throws UnsupportedEncodingException
+     */
+    @RequestMapping("getPayBillContent")
+    @ResponseBody
+    public Map getPayBillContent(@RequestBody Map map ) throws UnsupportedEncodingException {
+
+        return paymentBillService.getPayBillContent(map);
+    }
+
+    /**
+     *更新汇款凭证状态
+     * @param map
+     * @return
+     * @throws UnsupportedEncodingException
+     */
+    @RequestMapping("updatePayBillState")
+    @ResponseBody
+    public Map updatePayBillState(@RequestBody Map map )  {
+
+        return paymentBillService.updatePayBillState(map);
+    }
 }
