@@ -1,6 +1,7 @@
 package com.yulan.dao;
 
 import com.yulan.pojo.ReturnCompensationBill;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -20,5 +21,7 @@ public interface ReturnCompensationBillDao {
     Long countSimpleReturnCompensationBills(Map parameters);
 
     int updateReturnCompensationBill(ReturnCompensationBill returnCompensationBill);
+
+    int updateReturnCompensationBillState(@Param("id") String id, @Param("state") String state);
 
 }

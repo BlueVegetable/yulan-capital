@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yulan.dao.PaymentBillDao">
+
+    <resultMap id="PaymentBillMap" type="PaymentBill" >
+        <id column="ID" property="id" jdbcType="CHAR" />
+        <result column="CID" property="cid" jdbcType="VARCHAR" />
+        <result column="CNAME" property="cname" jdbcType="VARCHAR" />
+        <result column="CREATE_TS" property="createTs" jdbcType="TIMESTAMP" />
+        <result column="YULAN_BANK" property="yulanBank" jdbcType="VARCHAR" />
+        <result column="PAYER_NAME" property="payerName" jdbcType="VARCHAR" />
+        <result column="PAY_AMOUNT" property="payAmount" jdbcType="DECIMAL" />
+        <result column="PAY_DATE" property="payDate" jdbcType="TIMESTAMP" />
+        <result column="IMG_FILE_NAME" property="imgFileName" jdbcType="VARCHAR" />
+        <result column="SUBMIT_TS" property="submitTs" jdbcType="TIMESTAMP" />
+        <result column="MEMO" property="memo" jdbcType="VARCHAR" />
+        <result column="CANCEL_TS" property="cancelTs" jdbcType="TIMESTAMP" />
+        <result column="SENDBACK_TS" property="sendbackTs" jdbcType="TIMESTAMP" />
+        <result column="SENDBACK_REASON" property="sendbackReason" jdbcType="VARCHAR" />
+        <result column="ERP_PROCESS_TS" property="erpProcessTs" jdbcType="TIMESTAMP" />
+        <result column="ERP_PROCESS_OP" property="erpProcessOp" jdbcType="VARCHAR" />
+        <result column="STATE" property="state" jdbcType="CHAR" />
+        <result column="PAYER_ACCOUNT" property="payerAccount" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="PaymentBillList" >
+    ID, CID, CNAME, CREATE_TS, YULAN_BANK, PAYER_NAME, PAY_AMOUNT, PAY_DATE, IMG_FILE_NAME,
+    SUBMIT_TS, MEMO, CANCEL_TS, SENDBACK_TS, SENDBACK_REASON, ERP_PROCESS_TS, ERP_PROCESS_OP,
+    STATE, PAYER_ACCOUNT
+  </sql>
+
+    <select id="getPaymentBillByID" parameterType="String" resultType="PaymentBill">
+        select * from payment_bill where id = #{id}
+    </select>
+
+    <select id="findPaymentBillIds" parameterType="String" resultType="Map">
+        select ID from payment_bill t where  t.id like '%'||#{idDate}||'%'
+    </select>
+
+    <insert id="insertPaymentBill" parameterType="PaymentBill">
+        insert into PAYMENT_BILL
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                ID,
+            </if>
+            <if test="cid != null" >
+                CID,
+            </if>
+            <if test="cname != null" >
+                CNAME,
+            </if>
+            <if test="createTs != null" >
+                CREATE_TS,
+            </if>
+            <if test="yulanBank != null" >
+                YULAN_BANK,
+            </if>
+            <if test="payerName != null" >
+                PAYER_NAME,
+            </if>
+            <if test="payAmount != null" >
+                PAY_AMOUNT,
+            </if>
+            <if test="payDate != null" >
+                PAY_DATE,
+            </if>
+            <if test="imgFileName != null" >
+                IMG_FILE_NAME,
+            </if>
+            <if test="submitTs != null" >
+                SUBMIT_TS,
+            </if>
+            <if test="memo != null" >
+                MEMO,
+            </if>
+            <if test="cancelTs != null" >
+                CANCEL_TS,
+            </if>
+            <if test="sendbackTs != null" >
+                SENDBACK_TS,
+            </if>
+            <if test="sendbackReason != null" >
+                SENDBACK_REASON,
+            </if>
+            <if test="erpProcessTs != null" >
+                ERP_PROCESS_TS,
+            </if>
+            <if test="erpProcessOp != null" >
+                ERP_PROCESS_OP,
+            </if>
+            <if test="state != null" >
+                STATE,
+            </if>
+            <if test="payerAccount != null" >
+                PAYER_ACCOUNT,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=CHAR},
+            </if>
+            <if test="cid != null" >
+                #{cid,jdbcType=VARCHAR},
+            </if>
+            <if test="cname != null" >
+                #{cname,jdbcType=VARCHAR},
+            </if>
+            <if test="createTs != null" >
+                #{createTs,jdbcType=TIMESTAMP},
+            </if>
+            <if test="yulanBank != null" >
+                #{yulanBank,jdbcType=VARCHAR},
+            </if>
+            <if test="payerName != null" >
+                #{payerName,jdbcType=VARCHAR},
+            </if>
+            <if test="payAmount != null" >
+                #{payAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="payDate != null" >
+                #{payDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="imgFileName != null" >
+                #{imgFileName,jdbcType=VARCHAR},
+            </if>
+            <if test="submitTs != null" >
+                #{submitTs,jdbcType=TIMESTAMP},
+            </if>
+            <if test="memo != null" >
+                #{memo,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelTs != null" >
+                #{cancelTs,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sendbackTs != null" >
+                #{sendbackTs,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sendbackReason != null" >
+                #{sendbackReason,jdbcType=VARCHAR},
+            </if>
+            <if test="erpProcessTs != null" >
+                #{erpProcessTs,jdbcType=TIMESTAMP},
+            </if>
+            <if test="erpProcessOp != null" >
+                #{erpProcessOp,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null" >
+                #{state,jdbcType=CHAR},
+            </if>
+            <if test="payerAccount != null" >
+                #{payerAccount,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="getPaymentBillsbyCid" resultMap="PaymentBillMap">
+        select
+        *
+
+        from (
+        select rownum rn,l.* from
+        (select
+        <include refid="PaymentBillList" />
+
+        from PAYMENT_BILL t where 1=1
+
+
+        <if test="state!=null">
+            and state=#{state}
+        </if>
+        <if test="beginTime!=null">
+            and CREATE_TS between to_date(#{beginTime},'yyyy/mm/dd hh24:mi:ss') and to_date(#{finishTime},'yyyy/mm/dd hh24:mi:ss')
+        </if>
+        <if test="cid!=null">
+            and cid =#{cid}
+        </if>
+
+
+
+
+        order by t.CREATE_TS  DESC
+        ) l
+        where rownum &lt;= #{number})
+        where rn &gt;=#{start}
+    </select>
+    <select id="countPaybills" resultType="int">
+        select count(id) from   (select
+        <include refid="PaymentBillList" />
+
+        from PAYMENT_BILL t where 1=1
+
+
+        <if test="state!=null">
+            and state=#{state}
+        </if>
+        <if test="beginTime!=null">
+            and CREATE_TS between to_date(#{beginTime},'yyyy/mm/dd hh24:mi:ss') and to_date(#{finishTime},'yyyy/mm/dd hh24:mi:ss')
+        </if>
+        <if test="cid!=null">
+            and cid =#{cid}
+        </if>
+        )
+    </select>
+
+</mapper>

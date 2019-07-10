@@ -66,4 +66,11 @@ public class ReturnCompensationBillController {
         return Response.getResponseMap(0,"",returnCompensationBillService.updateReturnCompensationBill(returnCompensationBill));
     }
 
+    @ResponseBody
+    @RequestMapping("updateReturnCompensationBillState")
+    public Map updateReturnCompensationBillState(@RequestParam("id")String id,@RequestParam("state")String state) {
+        return Response.getResponseMap(0,"",
+                returnCompensationBillService.updateReturnCompensationBillState(id, state));
+    }
+
 }
