@@ -26,6 +26,10 @@
         #{printed,jdbcType=CHAR})
     </insert>
 
+    <delete id="deleteReturnCompensationBill" parameterType="String">
+        delete from RETURNCOMPENSATIONBILL where id = #{id}
+    </delete>
+
     <select id="getMaxID" parameterType="String" resultType="String">
         select * from (select id from RETURNCOMPENSATIONBILL where id like concat(concat('RZ',#{previous}),'%') order by id desc) where rownum=1
     </select>

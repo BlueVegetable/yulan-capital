@@ -29,6 +29,10 @@
         )
     </insert>
 
+    <delete id="deleteRtcbItemsByRtcbID" parameterType="String">
+        delete from RTCB_ITEM where rtcb_id = #{rtcbID}
+    </delete>
+
     <select id="getRtcbItemsByRtcbID" parameterType="String" resultMap="RtcbItemMap">
         select * from RTCB_ITEM t where rtcb_id = #{rtcbID} order by item_index
     </select>
