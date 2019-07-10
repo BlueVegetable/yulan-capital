@@ -19,4 +19,6 @@ public interface ReturnCompensationBillDao {
 
     Long countSimpleReturnCompensationBills(Map parameters);
 
+    int updateReturnCompensationBill(ReturnCompensationBill returnCompensationBill);
+
 }
