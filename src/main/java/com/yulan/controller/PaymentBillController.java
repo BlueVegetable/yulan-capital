@@ -86,4 +86,19 @@ public class PaymentBillController {
 
         return paymentBillService.updatePayBillState(map);
     }
+
+    /**
+     * 更新汇款凭证
+     * @param map
+     * @return
+     * @throws UnsupportedEncodingException
+     */
+    @RequestMapping("updatePayBill")
+    @ResponseBody
+    public Map updatePayBill(@RequestBody Map map ) throws UnsupportedEncodingException {
+
+        return paymentBillService.updatePayBill(map);
+    }
+
+
 }

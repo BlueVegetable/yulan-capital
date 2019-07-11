@@ -68,7 +68,8 @@ public class PaymentBillServiceImpl implements PaymentBillService {
         }
         PaymentBill paymentBill= MapUtils.mapToBean(map,PaymentBill.class);
         paymentBill.setCreateTs(nowTime);
-
+        String id=this.getBigPaymentBillId();
+        paymentBill.setId(id);//流水号
         if (paymentBill.getPayDate()==null){
             paymentBill.setPayDate(now);//测试
         }
@@ -77,6 +78,7 @@ public class PaymentBillServiceImpl implements PaymentBillService {
         if (paymentBillDao.insertPaymentBill(paymentBill)){
             result.put("code",0);
             result.put("msg","新建成功");
+            result.put("data",id);
         }else {
             result.put("code",1);
             result.put("msg","新建失败");
@@ -174,6 +176,39 @@ public class PaymentBillServiceImpl implements PaymentBillService {
             result=Response.getResponseMap(1,"FALSE","FALSE");
         }
         return result;
+    }
+
+    @Override
+    public Map updatePayBill(Map<String, Object> map) throws UnsupportedEncodingException {
+        Map result=new HashMap();
+
+        Date now=new Date(System.currentTimeMillis());//测试接口
+
+        for (Map.Entry<String, Object> entry : map.entrySet()) {//转码
+            if (entry.getValue() instanceof String) {
+                String origin = StringUtil.setUtf8(String.valueOf(entry.getValue()));
+                entry.setValue(origin);
+            }
+        }
+        PaymentBill paymentBill= MapUtils.mapToBean(map,PaymentBill.class);
+
+
+        if (paymentBill.getPayDate()==null){
+            paymentBill.setPayDate(now);//测试
+        }
+
+
+        if (paymentBillDao.updatePayBill(paymentBill)){
+            result.put("data",paymentBill.getId());
+            result.put("code",0);
+            result.put("msg","修改成功");
+        }else {
+            result.put("code",1);
+            result.put("msg","修改失败");
+        }
+        return result;
+
+
     }
 
 

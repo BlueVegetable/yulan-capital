@@ -18,6 +18,9 @@ public class FileUpload {
 
     private final static String PATH = "E:\\upload";//本地路径
  // private final static String PATH = "D:\\Program Files\\apache-tomcat-9.0.12\\upload";//服务器路劲
+    private final static String PATH = "D:\\Downloads\\apache-tomcat-9.0.12\\upload";//本地路径
+//    private final static String PATH = "C:\\Program Files\\apache-tomcat-9.0.12\\upload";//测试服务器路径
+//    private final static String PATH = "D:\\application\\apache-tomcat-main\\upload";//yulan服务器路劲
     private final static String PaymentBill_PATH = "/paymentBill-image/";//保存银行汇款图
 
     private static final String ABDR_IMAGE_PATH = "/abdr-image/";//委托喷绘图片
@@ -30,7 +33,7 @@ public class FileUpload {
         //     String fileName = file.getOriginalFilename();
         String filePath = path+fileName + "."+ typeValue;
         Integer code = 0;
-        String msg = "SUCCESS";
+        String msg="SUCCESS";
 
         InputStream is = null;
         OutputStream os = null;
@@ -69,10 +72,10 @@ public class FileUpload {
         result.put("msg",msg);
         result.put("fileName",fileName + "." + typeValue);
         result.put("filePath",filePath);
-        result.put("fileType",type);
+        result.put("sqlpath",PaymentBill_PATH+fileName + "." + typeValue);//保存到数据库的相对路径
+        result.put("fileTypecopyImg",type);
         return result;
     }
-
 
     public static Map<String,Object> copyAbdrImageFile(MultipartFile file, String path, String fileName) {
         String type = file.getContentType();
@@ -155,5 +158,20 @@ public class FileUpload {
         result.put("code",code);
         return  result;
     }
+    public static String getPayBillRealPath(String fileName){
+        return PATH+PaymentBill_PATH+fileName;
+    }
+
+
+    /**
+     * 确定唯一命名
+     * @return
+     */
+    public static String getFileName(){
+        UUID randomUUID = UUID.randomUUID();
+        String nowtime=System.nanoTime()+"";
+        String fileName=randomUUID+"-"+nowtime;
+        return fileName;
+    };
 
 }
