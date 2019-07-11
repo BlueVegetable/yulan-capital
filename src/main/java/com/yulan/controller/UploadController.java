@@ -22,14 +22,13 @@ public class UploadController {
     /**
      * 上传汇款照片
      * @param file
-     * @param companyId
      * @return
      */
     @RequestMapping("uploadPaymentBillImg")
     @ResponseBody
-    public Map uploadImg(@RequestParam("file") MultipartFile file, @RequestParam("companyId") String companyId ){
+    public Map uploadImg(@RequestParam("file") MultipartFile file){
         String pb=paymentBillService.getBigPaymentBillId();
-        String fileName=pb+"-"+companyId;
+        String fileName=pb;
         Map result= FileUpload.copyPaymentBillImg(file,fileName);
         result.put("PBid",pb);//流水号
 

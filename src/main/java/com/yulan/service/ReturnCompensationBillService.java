@@ -25,11 +25,19 @@ public class ReturnCompensationBillService {
 
     public boolean addReturnCompensationBill(ReturnCompensationBill returnCompensationBill) {
         List<RtcbItem> rtcbItems = returnCompensationBill.getRtcbItems();
+
+        String id = generateID();
+        returnCompensationBill.setId(id);
+        returnCompensationBill.setErpCreatorname(StringUtil.UTF8ToGBK(returnCompensationBill.getErpCreatorname()));
+        returnCompensationBill.setCname(StringUtil.UTF8ToGBK(returnCompensationBill.getCname()));
+        returnCompensationBill.setCreateTs(new Timestamp(System.currentTimeMillis()));
+        returnCompensationBill.setState("ONCREATE");
+        returnCompensationBill.setPrinted("1");
+        returnCompensationBillDao.addReturnCompensationBill(returnCompensationBill);
+
         if(rtcbItems == null||rtcbItems.size() == 0) {
             return false;
         }
-        String id = generateID();
-        returnCompensationBill.setId(id);
         for (RtcbItem rtcbItem:rtcbItems) {
             rtcbItem.setRtcbId(id);
             rtcbItem.setProductionVersion(StringUtil.UTF8ToGBK(rtcbItem.getProductionVersion()));
@@ -37,13 +45,6 @@ public class ReturnCompensationBillService {
             rtcbItem.setNotes(StringUtil.UTF8ToGBK(rtcbItem.getNotes()));
             rtcbItem.setProcess(StringUtil.UTF8ToGBK(rtcbItem.getProcess()));
         }
-        returnCompensationBill.setErpCreatorname(StringUtil.UTF8ToGBK(returnCompensationBill.getErpCreatorname()));
-        returnCompensationBill.setCname(StringUtil.UTF8ToGBK(returnCompensationBill.getCname()));
-        returnCompensationBill.setCreateTs(new Timestamp(System.currentTimeMillis()));
-        returnCompensationBill.setState("ONCREATE");
-        returnCompensationBill.setPrinted("1");
-
-        returnCompensationBillDao.addReturnCompensationBill(returnCompensationBill);
         rtcbItemDao.addRtcbItems(rtcbItems);
         return true;
     }
@@ -120,6 +121,10 @@ public class ReturnCompensationBillService {
         }
         rtcbItemDao.addRtcbItems(rtcbItems);
         return true;
+    }
+
+    public boolean updateReturnCompensationBillState(String id,String state) {
+        return returnCompensationBillDao.updateReturnCompensationBillState(id,state) > 0;
     }
 
     private synchronized String generateID() {

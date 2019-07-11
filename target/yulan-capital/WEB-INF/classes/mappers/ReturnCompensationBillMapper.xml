@@ -86,4 +86,8 @@
         </if>
     </select>
 
+    <update id="updateReturnCompensationBillState" parameterType="Map">
+        update RETURNCOMPENSATIONBILL set state = #{state} where id = #{id}
+    </update>
+
 </mapper>
