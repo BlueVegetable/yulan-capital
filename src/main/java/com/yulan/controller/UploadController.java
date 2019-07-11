@@ -27,10 +27,8 @@ public class UploadController {
     @RequestMapping("uploadPaymentBillImg")
     @ResponseBody
     public Map uploadImg(@RequestParam("file") MultipartFile file){
-        String pb=paymentBillService.getBigPaymentBillId();
-        String fileName=pb;
+        String fileName=FileUpload.getFileName();
         Map result= FileUpload.copyPaymentBillImg(file,fileName);
-        result.put("PBid",pb);//流水号
 
         return result;
     }

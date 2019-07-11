@@ -63,4 +63,11 @@ public interface PaymentBillDao {
      * @return
      */
     boolean updatePayBillState(@Param("id") String id,@Param("state")String state);
+
+    /**
+     * 更新汇款凭证
+     * @param paymentBill
+     * @return
+     */
+    boolean updatePayBill(PaymentBill paymentBill);
 }

@@ -39,5 +39,11 @@ public interface PaymentBillService {
      */
     Map updatePayBillState(Map<String,Object> map);
 
+    /**
+     * 更新汇款凭证
+     * @param map
+     * @return
+     */
+    Map updatePayBill(Map<String,Object> map) throws UnsupportedEncodingException;
 
 }
