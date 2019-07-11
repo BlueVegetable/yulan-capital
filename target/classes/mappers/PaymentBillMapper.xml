@@ -216,4 +216,65 @@
         update  PAYMENT_BILL t set t.state =#{state} where t.id=#{id}
     </update>
 
+    <update id="updatePayBill" parameterType="PaymentBill" >
+        update PAYMENT_BILL
+        <set >
+            <if test="cid != null" >
+                CID = #{cid,jdbcType=VARCHAR},
+            </if>
+            <if test="cname != null" >
+                CNAME = #{cname,jdbcType=VARCHAR},
+            </if>
+            <if test="createTs != null" >
+                CREATE_TS = #{createTs,jdbcType=TIMESTAMP},
+            </if>
+            <if test="yulanBank != null" >
+                YULAN_BANK = #{yulanBank,jdbcType=VARCHAR},
+            </if>
+            <if test="payerName != null" >
+                PAYER_NAME = #{payerName,jdbcType=VARCHAR},
+            </if>
+            <if test="payAmount != null" >
+                PAY_AMOUNT = #{payAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="payDate != null" >
+                PAY_DATE = #{payDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="imgFileName != null" >
+                IMG_FILE_NAME = #{imgFileName,jdbcType=VARCHAR},
+            </if>
+            <if test="submitTs != null" >
+                SUBMIT_TS = #{submitTs,jdbcType=TIMESTAMP},
+            </if>
+            <if test="memo != null" >
+                MEMO = #{memo,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelTs != null" >
+                CANCEL_TS = #{cancelTs,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sendbackTs != null" >
+                SENDBACK_TS = #{sendbackTs,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sendbackReason != null" >
+                SENDBACK_REASON = #{sendbackReason,jdbcType=VARCHAR},
+            </if>
+            <if test="erpProcessTs != null" >
+                ERP_PROCESS_TS = #{erpProcessTs,jdbcType=TIMESTAMP},
+            </if>
+            <if test="erpProcessOp != null" >
+                ERP_PROCESS_OP = #{erpProcessOp,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null" >
+                STATE = #{state,jdbcType=CHAR},
+            </if>
+            <if test="payerAccount != null" >
+                PAYER_ACCOUNT = #{payerAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="imgUrl != null" >
+                IMG_URL = #{imgUrl,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=CHAR}
+    </update>
+
 </mapper>

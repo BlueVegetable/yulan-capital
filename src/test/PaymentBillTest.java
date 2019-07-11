@@ -1,6 +1,7 @@
 import com.yulan.dao.PaymentBillDao;
 import com.yulan.dao.ReturnCompensationBillDao;
 import com.yulan.service.ReturnCompensationBillService;
+import com.yulan.utils.FileUpload;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,10 @@ public class PaymentBillTest {
         number++;
         String newID = "RZ" + previous + String.format("%05d", number);
         System.out.println(newID);
+    }
+
+    @Test
+    public void test3(){
+        System.out.println(FileUpload.getFileName());
     }
 }
