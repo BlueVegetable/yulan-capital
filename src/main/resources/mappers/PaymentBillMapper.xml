@@ -21,11 +21,12 @@
         <result column="ERP_PROCESS_OP" property="erpProcessOp" jdbcType="VARCHAR" />
         <result column="STATE" property="state" jdbcType="CHAR" />
         <result column="PAYER_ACCOUNT" property="payerAccount" jdbcType="VARCHAR" />
+        <result column="IMG_URL" property="imgUrl" jdbcType="VARCHAR" />
     </resultMap>
     <sql id="PaymentBillList" >
     ID, CID, CNAME, CREATE_TS, YULAN_BANK, PAYER_NAME, PAY_AMOUNT, PAY_DATE, IMG_FILE_NAME,
     SUBMIT_TS, MEMO, CANCEL_TS, SENDBACK_TS, SENDBACK_REASON, ERP_PROCESS_TS, ERP_PROCESS_OP,
-    STATE, PAYER_ACCOUNT
+    STATE, PAYER_ACCOUNT,IMG_URL
   </sql>
 
     <select id="getPaymentBillByID" parameterType="String" resultType="PaymentBill">
@@ -93,6 +94,9 @@
             <if test="payerAccount != null" >
                 PAYER_ACCOUNT,
             </if>
+            <if test="imgUrl != null" >
+                IMG_URL,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
             <if test="id != null" >
@@ -148,6 +152,9 @@
             </if>
             <if test="payerAccount != null" >
                 #{payerAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="imgUrl != null" >
+                #{imgUrl,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>

@@ -16,7 +16,7 @@ public class FileUpload {
 
     private final static int LENGTH=1024;
 
-    private final static String PATH = "H:\\upload";//本地路径
+    private final static String PATH = "D:\\Downloads\\apache-tomcat-9.0.12\\upload";//本地路径
 //    private final static String PATH = "D:\\application\\apache-tomcat-main\\upload";//服务器路劲
     private final static String PaymentBill_PATH = "/paymentBill-image/";//保存银行汇款图
 
@@ -66,8 +66,9 @@ public class FileUpload {
         Map<String,Object> result = new HashMap<>(4);
         result.put("code",code);
         result.put("msg",msg);
-        result.put("sqlfileName",fileName + "." + typeValue);
+        result.put("fileName",fileName + "." + typeValue);
         result.put("filePath",filePath);
+        result.put("sqlpath",PaymentBill_PATH+fileName + "." + typeValue);//保存到数据库的相对路径
         result.put("fileTypecopyImg",type);
         return result;
     }
