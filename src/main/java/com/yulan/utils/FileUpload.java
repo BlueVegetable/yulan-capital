@@ -16,9 +16,11 @@ public class FileUpload {
 
     private final static int LENGTH=1024;
 
-    private final static String PATH = "H:\\upload";//本地路径
-//    private final static String PATH = "D:\\application\\apache-tomcat-main\\upload";//服务器路劲
+//    private final static String PATH = "E:\\upload";//本地路径
+  private final static String PATH = "D:\\Program Files\\apache-tomcat-9.0.12\\upload";//服务器路劲
     private final static String PaymentBill_PATH = "/paymentBill-image/";//保存银行汇款图
+
+    private static final String ABDR_IMAGE_PATH = "/abdr-image/";//委托喷绘图片
 
 
 
@@ -29,7 +31,7 @@ public class FileUpload {
         //     String fileName = file.getOriginalFilename();
         String filePath = path+fileName + "."+ typeValue;
         Integer code = 0;
-        String msg="SUCCESS";
+        String msg = "SUCCESS";
 
         InputStream is = null;
         OutputStream os = null;
@@ -66,14 +68,20 @@ public class FileUpload {
         Map<String,Object> result = new HashMap<>(4);
         result.put("code",code);
         result.put("msg",msg);
-        result.put("sqlfileName",fileName + "." + typeValue);
+        result.put("fileName",fileName + "." + typeValue);
         result.put("filePath",filePath);
-        result.put("fileTypecopyImg",type);
+        result.put("fileType",type);
         return result;
     }
 
     public static Map<String,Object> copyPaymentBillImg(MultipartFile file,String fileName) {
         Map<String,Object> result = copyFile(file,PATH + PaymentBill_PATH ,fileName);
+        return result;
+    }
+
+    public static Map<String,Object> copyAbdrImage(MultipartFile file,String fileName){
+        Map<String,Object> result = copyFile(file,PATH + ABDR_IMAGE_PATH  ,fileName);
+        result.put("relativePath" , ABDR_IMAGE_PATH );
         return result;
     }
 
