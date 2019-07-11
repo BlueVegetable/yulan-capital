@@ -73,6 +73,7 @@ public class AirbrushDesignerAssureServiceImpl implements AirbrushDesignerAssure
     @Override
     public Map updateAirbrushDesignerAssure(AirbrushDesignerAssure airbrushDesignerAssure) {
         Map<String, Object> map = new HashMap<>();
+        int flag = 0;
        // airbrushDesignerAssure.setCid(changeLoginNameToCompanyID(airbrushDesignerAssure.getCid()));
       /*  if(null != airbrushDesignerAssure.getCname()) {
             airbrushDesignerAssure.setCname(stringUtil.UTF8ToGBK(airbrushDesignerAssure.getCname()));
@@ -92,9 +93,10 @@ public class AirbrushDesignerAssureServiceImpl implements AirbrushDesignerAssure
                 break;
                 default:
                     map.put("data","客户状态不正确");
+                    flag = 1;
 
         }
-        if(airbrushDesignerAssureDao.updateAirbrushDesignerAssure(airbrushDesignerAssure)){
+        if(flag == 0 && airbrushDesignerAssureDao.updateAirbrushDesignerAssure(airbrushDesignerAssure)){
             map.put("msg","SUCCESS");
             map.put("code", 0);
 
