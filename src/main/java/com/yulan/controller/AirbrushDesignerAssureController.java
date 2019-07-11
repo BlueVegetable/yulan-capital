@@ -42,7 +42,7 @@ public class AirbrushDesignerAssureController {
     }
 
     /**
-     * 修改委托喷绘书接口
+     * 修改委托喷绘书客户状态接口
      * @param airbrushDesignerAssure
      * @return
      */

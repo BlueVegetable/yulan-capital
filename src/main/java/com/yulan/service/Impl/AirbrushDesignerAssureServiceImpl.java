@@ -73,8 +73,8 @@ public class AirbrushDesignerAssureServiceImpl implements AirbrushDesignerAssure
     @Override
     public Map updateAirbrushDesignerAssure(AirbrushDesignerAssure airbrushDesignerAssure) {
         Map<String, Object> map = new HashMap<>();
-        airbrushDesignerAssure.setCid(changeLoginNameToCompanyID(airbrushDesignerAssure.getCid()));
-        if(null != airbrushDesignerAssure.getCname()) {
+       // airbrushDesignerAssure.setCid(changeLoginNameToCompanyID(airbrushDesignerAssure.getCid()));
+      /*  if(null != airbrushDesignerAssure.getCname()) {
             airbrushDesignerAssure.setCname(stringUtil.UTF8ToGBK(airbrushDesignerAssure.getCname()));
         }
         if(null != airbrushDesignerAssure.getCustomerAgent()){
@@ -82,6 +82,17 @@ public class AirbrushDesignerAssureServiceImpl implements AirbrushDesignerAssure
         }
         if(null != airbrushDesignerAssure.getSendbackReason()){
             airbrushDesignerAssure.setSendbackReason(stringUtil.UTF8ToGBK(airbrushDesignerAssure.getSendbackReason()));
+        }*/
+        switch (airbrushDesignerAssure.getState()){
+            case "同意":
+                airbrushDesignerAssure.setState("APPROVED");
+                break;
+            case"不同意":
+                airbrushDesignerAssure.setState("CANCELED");
+                break;
+                default:
+                    map.put("data","客户状态不正确");
+
         }
         if(airbrushDesignerAssureDao.updateAirbrushDesignerAssure(airbrushDesignerAssure)){
             map.put("msg","SUCCESS");
