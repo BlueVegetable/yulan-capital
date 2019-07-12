@@ -10,10 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1dcd70af-eb88-4ef9-aa53-01745907fa7c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yulan/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yulan/controller/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yulan/controller/AirbrushDesignerAssureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yulan/controller/AirbrushDesignerAssureController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yulan/dao/AirbrushDesignerAssureDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yulan/dao/AirbrushDesignerAssureDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yulan/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yulan/service/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yulan/service/AirbrushDesignerAssureService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yulan/service/AirbrushDesignerAssureService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yulan/service/Impl/AirbrushDesignerAssureServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yulan/service/Impl/AirbrushDesignerAssureServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/AirbrushDesignerAssureMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/AirbrushDesignerAssureMapper.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -76,26 +78,27 @@
     <session id="771050710">
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="12" />
+          <entry key="java" value="14" />
           <entry key="xml" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="12" />
+          <entry key="JAVA" value="14" />
           <entry key="XML" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="232" />
-          <entry key="xml" value="3" />
+          <entry key="java" value="320" />
+          <entry key="xml" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="232" />
-          <entry key="XML" value="3" />
+          <entry key="JAVA" value="320" />
+          <entry key="SQL" value="1" />
+          <entry key="XML" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
@@ -109,29 +112,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/service/CustomerService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="34" column="36" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/CustomerMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="106" column="33" lean-forward="true" selection-start-line="106" selection-start-column="23" selection-end-line="106" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/controller/AirbrushDesignerAssureController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="25" column="77" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="77" />
+            <state relative-caret-position="323">
+              <caret line="60" column="49" selection-start-line="60" selection-start-column="21" selection-end-line="60" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -140,19 +125,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/controller/CustomerController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="28" column="54" lean-forward="true" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/service/Impl/AirbrushDesignerAssureServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="111" column="54" lean-forward="true" selection-start-line="111" selection-start-column="54" selection-end-line="111" selection-end-column="54" />
+            <state relative-caret-position="449">
+              <caret line="154" column="31" lean-forward="true" selection-start-line="154" selection-start-column="31" selection-end-line="154" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -160,8 +136,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/AirbrushDesignerAssureMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="539">
-              <caret line="58" column="87" lean-forward="true" selection-start-line="58" selection-start-column="87" selection-end-line="58" selection-end-column="87" />
+            <state relative-caret-position="164">
+              <caret line="66" column="17" lean-forward="true" selection-start-line="66" selection-start-column="17" selection-end-line="66" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -207,10 +183,8 @@
         <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/yulan/dao/Web_userDao.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mappers/Web_userMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yulan/controller/AirbrushDesignerAssureController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yulan/pojo/AbdrImage.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yulan/pojo/AirbrushDesignerAssure.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yulan/service/AirbrushDesignerAssureService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yulan/service/AbdrImageService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yulan/service/Impl/PaymentBillServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mappers/AbdrImageMapper.xml" />
@@ -219,11 +193,13 @@
         <option value="$PROJECT_DIR$/src/test/JavaTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yulan/controller/AbdrImageController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yulan/utils/FileUpload.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yulan/service/Impl/AirbrushDesignerAssureServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yulan/dao/AirbrushDesignerAssureDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yulan/service/CustomerService.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mappers/AirbrushDesignerAssureMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/yulan/controller/CustomerController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yulan/service/AirbrushDesignerAssureService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yulan/controller/AirbrushDesignerAssureController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yulan/dao/AirbrushDesignerAssureDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yulan/service/Impl/AirbrushDesignerAssureServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mappers/AirbrushDesignerAssureMapper.xml" />
       </list>
     </option>
   </component>
@@ -403,11 +379,11 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562919908295" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562921303102" />
     <property name="last_opened_file_path" value="D:/Oracle/ojdbc6.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="Errors" />
@@ -617,13 +593,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58603000" />
+    <option name="totallyTimeSpent" value="59340000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4984326" visible="true" weight="0.2660858" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4984326" visible="true" weight="0.2660858" />
       <window_info id="Structure" order="1" sideWeight="0.5015674" side_tool="true" weight="0.2627346" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -633,14 +609,14 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932975" visible="true" weight="0.36402267" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932975" visible="true" weight="0.36402267" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.35884354" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Application Servers" order="7" weight="0.32993197" />
       <window_info anchor="bottom" id="Spring" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.0" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.07365439" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50067025" side_tool="true" weight="0.5226629" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.26203966" />
@@ -860,13 +836,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/service/AirbrushDesignerAssureService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="12" column="48" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/service/Impl/AbdrImageServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -928,41 +897,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/dao/AirbrushDesignerAssureDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="15" column="57" lean-forward="true" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/AirbrushDesignerAssureMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="58" column="87" lean-forward="true" selection-start-line="58" selection-start-column="87" selection-end-line="58" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/service/Impl/AirbrushDesignerAssureServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="111" column="54" lean-forward="true" selection-start-line="111" selection-start-column="54" selection-end-line="111" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/controller/AirbrushDesignerAssureController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="25" column="77" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="77" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/controller/CustomerController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="28" column="54" lean-forward="true" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="54" />
+        <state relative-caret-position="171">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
@@ -977,6 +915,44 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="106" column="33" lean-forward="true" selection-start-line="106" selection-start-column="23" selection-end-line="106" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/service/AirbrushDesignerAssureService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="14" column="84" selection-start-line="14" selection-start-column="84" selection-end-line="14" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/dao/AirbrushDesignerAssureDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="15" column="89" lean-forward="true" selection-start-line="15" selection-start-column="89" selection-end-line="15" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/AirbrushDesignerAssureMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="66" column="17" lean-forward="true" selection-start-line="66" selection-start-column="17" selection-end-line="66" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/service/Impl/AirbrushDesignerAssureServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="154" column="31" lean-forward="true" selection-start-line="154" selection-start-column="31" selection-end-line="154" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yulan/controller/AirbrushDesignerAssureController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="60" column="49" selection-start-line="60" selection-start-column="21" selection-end-line="60" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

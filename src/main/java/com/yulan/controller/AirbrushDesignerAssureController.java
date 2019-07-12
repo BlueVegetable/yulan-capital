@@ -54,6 +54,17 @@ public class AirbrushDesignerAssureController {
     }
 
     /**
+     * 新增喷绘确认接口
+     * @param airbrushDesignerAssure
+     * @return
+     */
+    @RequestMapping("insertAirbrushDesignerAssure")
+    @ResponseBody
+    public Map insertAirbrushDesignerAssure(@RequestBody AirbrushDesignerAssure airbrushDesignerAssure){
+        return airbrushDesignerAssureService.insertAirbrushDesignerAssure(airbrushDesignerAssure);
+    }
+
+    /**
      * 删除委托喷绘书接口
      * @param data
      * @return

@@ -18,4 +18,6 @@ public interface AirbrushDesignerAssureDao {
     boolean updateAirbrushDesignerAssure(AirbrushDesignerAssure airbrushDesignerAssure);
 
     boolean deleteAirbrushDesignerAssure(String id);
+
+    boolean insertAirbrushDesignerAssure(AirbrushDesignerAssure airbrushDesignerAssure);
 }

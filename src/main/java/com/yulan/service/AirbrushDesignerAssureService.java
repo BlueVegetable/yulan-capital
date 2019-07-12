@@ -12,5 +12,6 @@ public interface AirbrushDesignerAssureService {
 
     Map deleteAirbrushDesignerAssure(String id);
 
+    Map insertAirbrushDesignerAssure(AirbrushDesignerAssure airbrushDesignerAssure);
 
 }

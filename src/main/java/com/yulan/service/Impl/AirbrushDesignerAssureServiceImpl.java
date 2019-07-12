@@ -133,6 +133,30 @@ public class AirbrushDesignerAssureServiceImpl implements AirbrushDesignerAssure
         return map;
     }
 
+    @Override
+    public Map insertAirbrushDesignerAssure(AirbrushDesignerAssure airbrushDesignerAssure) {
+        Map<String, Object> map = new HashMap<>();
+         airbrushDesignerAssure.setCid(changeLoginNameToCompanyID(airbrushDesignerAssure.getCid()));
+       if(null != airbrushDesignerAssure.getCname()) {
+            airbrushDesignerAssure.setCname(stringUtil.UTF8ToGBK(airbrushDesignerAssure.getCname()));
+        }
+        if(null != airbrushDesignerAssure.getCustomerAgent()){
+            airbrushDesignerAssure.setCustomerAgent(stringUtil.UTF8ToGBK(airbrushDesignerAssure.getCustomerAgent()));
+        }
+        if(null != airbrushDesignerAssure.getSendbackReason()){
+            airbrushDesignerAssure.setSendbackReason(stringUtil.UTF8ToGBK(airbrushDesignerAssure.getSendbackReason()));
+        }
+
+        if(airbrushDesignerAssureDao.insertAirbrushDesignerAssure(airbrushDesignerAssure)){
+            map.put("msg", "SUCCESS");
+            map.put("code", 0);
+        }else {
+            map.put("msg", "FAILED");
+            map.put("code", 1);
+        }
+        return map;
+    }
+
     private String changeLoginNameToCompanyID(String cid) {
         return web_userDao.changeLoginNameToCompanyID(cid);
     }

@@ -59,5 +59,87 @@
         select t.id from  AIRBRUSHDESIGNREASSURE t where  t.id like '%'||#{idDate}||'%'
     </select>
 
+    <insert id="insertAirbrushDesignerAssure" parameterType="com.yulan.pojo.AirbrushDesignerAssure">
+        insert into AIRBRUSHDESIGNREASSURE
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                ID,
+            </if>
+            <if test="erpCreator != null" >
+                ERP_CREATOR,
+            </if>
+            <if test="createTs != null" >
+                CREATE_TS,
+            </if>
+            <if test="cid != null" >
+                CID,
+            </if>
+            <if test="cname != null" >
+                CNAME,
+            </if>
+            <if test="customerAgent != null" >
+                CUSTOMER_AGENT,
+            </if>
+            <if test="officeTel != null" >
+                OFFICE_TEL,
+            </if>
+            <if test="reassureTs != null" >
+                REASSURE_TS,
+            </if>
+            <if test="sendbackReason != null" >
+                SENDBACK_REASON,
+            </if>
+            <if test="imageCount != null" >
+                IMAGE_COUNT,
+            </if>
+            <if test="imageMaxIndex != null" >
+                IMAGE_MAX_INDEX,
+            </if>
+            <if test="state != null" >
+                STATE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=CHAR},
+            </if>
+            <if test="erpCreator != null" >
+                #{erpCreator,jdbcType=VARCHAR},
+            </if>
+            <if test="createTs != null" >
+                #{createTs,jdbcType=TIMESTAMP},
+            </if>
+            <if test="cid != null" >
+                #{cid,jdbcType=VARCHAR},
+            </if>
+            <if test="cname != null" >
+                #{cname,jdbcType=VARCHAR},
+            </if>
+            <if test="customerAgent != null" >
+                #{customerAgent,jdbcType=VARCHAR},
+            </if>
+            <if test="officeTel != null" >
+                #{officeTel,jdbcType=VARCHAR},
+            </if>
+            <if test="reassureTs != null" >
+                #{reassureTs,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sendbackReason != null" >
+                #{sendbackReason,jdbcType=VARCHAR},
+            </if>
+            <if test="imageCount != null" >
+                #{imageCount,jdbcType=DECIMAL},
+            </if>
+            <if test="imageMaxIndex != null" >
+                #{imageMaxIndex,jdbcType=DECIMAL},
+            </if>
+            <if test="state != null" >
+                #{state,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+
+
 
 </mapper>
