@@ -17,10 +17,12 @@ public class FileUpload {
 
     private final static int LENGTH=1024;
 
-    private final static String PATH = "E:\\upload";//本地路径
+//    private final static String PATH = "E:\\upload";//yifan本地路径
  // private final static String PATH = "D:\\Program Files\\apache-tomcat-9.0.12\\upload";//服务器路劲
  //   private final static String PATH = "D:\\Downloads\\apache-tomcat-9.0.12\\upload";//本地路径
 //    private final static String PATH = "C:\\Program Files\\apache-tomcat-9.0.12\\upload";//测试服务器路径
+//    private final static String PATH = "D:\\Downloads\\apache-tomcat-9.0.12\\upload";//lin本地路径
+    private final static String PATH = "C:\\Program Files\\apache-tomcat-9.0.12\\upload";//测试服务器路径
 //    private final static String PATH = "D:\\application\\apache-tomcat-main\\upload";//yulan服务器路劲
     private final static String PaymentBill_PATH = "/paymentBill-image/";//保存银行汇款图
 

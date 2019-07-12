@@ -211,6 +211,29 @@ public class PaymentBillServiceImpl implements PaymentBillService {
 
     }
 
+    @Override
+    public Map getPayNameAndAccount(Map<String, Object> map) throws UnsupportedEncodingException {
+        Map result=new HashMap();
+        List<Map<String,Object>> dataList=new ArrayList<>();
+        String cid=map.get("companyId").toString();
+        List<Map<String,Object>> list=paymentBillDao.getPayNameAndAccount(cid);
+        if (list.size()==0){//无数据返空
+            return Response.getResponseMap(0,"SUCCESS",null);
+        }
+        for (Map<String,Object> map1:list){
+            for (Map.Entry<String, Object> entry : map1.entrySet()) {//转码
+                if (entry.getValue() instanceof String) {
+                    String origin = StringUtil.getUtf8(String.valueOf(entry.getValue()));
+                    entry.setValue(origin);
+                }
+            }
+            dataList.add(map1);
+        }
+        result=Response.getResponseMap(0,"SUCCESS",dataList);
+
+        return result;
+    }
+
 
 }
 
