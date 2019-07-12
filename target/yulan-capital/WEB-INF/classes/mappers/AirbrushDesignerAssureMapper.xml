@@ -22,9 +22,15 @@
         select rownum rm, c.*  from
         (
         select t.* ,COUNT(*) OVER () TOTAL from AIRBRUSHDESIGNREASSURE t
+        <if test="START_DATE != null">
         where t.create_ts &gt;= to_date(#{START_DATE},'yyyy/mm/dd hh24:mi:ss')
+        </if>
+        <if test="END_DATE != null">
         and t.create_ts &lt;= to_date(#{END_DATE},'yyyy/mm/dd hh24:mi:ss')
+        </if>
+        <if test="CID != null">
         and t.cid = #{CID}
+        </if>
         <if test="STATE != null">
         and t.state = #{STATE}
         </if>

@@ -32,7 +32,9 @@ public class AirbrushDesignerAssureServiceImpl implements AirbrushDesignerAssure
                                          String endDate, String states,
                                          Integer page, Integer lastNum) {
         Map<String, Object> map = new HashMap<>();
-        cid = changeLoginNameToCompanyID(cid);
+        if(cid != null) {
+            cid = changeLoginNameToCompanyID(cid);
+        }
         List<AirbrushDesignerAssure> airbrushDesignerAssureList =
                 airbrushDesignerAssureDao.getAirbrushDesignerAssure(cid,
                         startDate, endDate, states, page, lastNum);
