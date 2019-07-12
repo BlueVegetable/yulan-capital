@@ -55,5 +55,9 @@
        delete from AIRBRUSHDESIGNREASSURE t where t.id = #{id,jdbcType=CHAR}
    </delete>
 
+    <select id="findAirbrushDesignerAssureId" parameterType="String" resultType="Map">
+        select t.id from  AIRBRUSHDESIGNREASSURE t where  t.id like '%'||#{idDate}||'%'
+    </select>
+
 
 </mapper>
