@@ -70,4 +70,13 @@ public interface PaymentBillDao {
      * @return
      */
     boolean updatePayBill(PaymentBill paymentBill);
+
+
+    /**
+     * 获取客户已填银行账号和汇款人名
+     * @param cid
+     * @return
+     */
+    List<Map<String,Object>> getPayNameAndAccount(@Param("cid")String cid);
+
 }

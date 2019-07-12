@@ -277,4 +277,8 @@
         where ID = #{id,jdbcType=CHAR}
     </update>
 
+    <select id="getPayNameAndAccount" resultType="Map">
+        select t.payer_name,t.payer_account from PAYMENT_BILL t where t.cid=#{cid} group by t.payer_name,t.payer_account
+    </select>
+
 </mapper>

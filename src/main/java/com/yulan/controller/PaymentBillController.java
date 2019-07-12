@@ -100,5 +100,18 @@ public class PaymentBillController {
         return paymentBillService.updatePayBill(map);
     }
 
+    /**
+     * 获取客户已填银行账号和汇款人名
+     * @param map
+     * @return
+     * @throws UnsupportedEncodingException
+     */
+    @RequestMapping("getPayNameAndAccount")
+    @ResponseBody
+    public Map getPayNameAndAccount(@RequestBody Map map ) throws UnsupportedEncodingException {
+
+        return paymentBillService.getPayNameAndAccount(map);
+    }
+
 
 }
