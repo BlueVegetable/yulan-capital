@@ -39,6 +39,6 @@ public class PaymentBillTest {
 
     @Test
     public void test3(){
-        System.out.println(FileUpload.getFileName());
+        System.out.println(System.currentTimeMillis());
     }
 }
