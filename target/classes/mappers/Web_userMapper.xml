@@ -25,4 +25,9 @@
     <select id="changeLoginNameToCompanyID" resultType="String">
         select t.company_id from WEB_USER t where t.loginname = #{cid}
     </select>
+
+    <select id="getWebUserNameById" resultType="String">
+         select t.realname from WEB_USER t where t.loginname = #{cid}
+    </select>
+
 </mapper>

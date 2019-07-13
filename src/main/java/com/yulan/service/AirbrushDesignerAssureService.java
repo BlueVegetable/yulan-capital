@@ -1,6 +1,7 @@
 package com.yulan.service;
 
 import com.yulan.pojo.AirbrushDesignerAssure;
+import com.yulan.pojo.Customer;
 
 import java.util.Map;
 
@@ -12,6 +13,8 @@ public interface AirbrushDesignerAssureService {
 
     Map deleteAirbrushDesignerAssure(String id);
 
-    Map insertAirbrushDesignerAssure(AirbrushDesignerAssure airbrushDesignerAssure);
+    String getAirbrushDesignerAssureId();
+
+    AirbrushDesignerAssure insertAirbrushDesignerAssure( String id, Customer customer, String erpCreator);
 
 }

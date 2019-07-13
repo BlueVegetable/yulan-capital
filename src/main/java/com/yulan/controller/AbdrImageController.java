@@ -66,5 +66,17 @@ public class AbdrImageController {
         return result;
     }
 
+    /**
+     * 根据流水号获取图片接口
+     * @param data
+     * @return
+     */
+    @RequestMapping("getAbdrImage")
+    @ResponseBody
+    public Map getAbdrImage(@RequestBody Map<String,Object> data){
+         String abdrImageId = (String)data.get("abdrImageId");
+         return abdrImageService.getAbdrImage(abdrImageId);
+    }
+
 
 }

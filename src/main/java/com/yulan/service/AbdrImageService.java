@@ -7,4 +7,6 @@ import java.util.Map;
 public interface AbdrImageService {
 
     Map insertAbdrImage(AbdrImage abdrImage);
+
+    Map getAbdrImage(String abdrImageId);
 }

@@ -31,9 +31,19 @@ public class AirbrushDesignerAssure {
 
     private int total;
 
+    private String realName;
+
     private List<AbdrImage> abdrImage;
 
     public AirbrushDesignerAssure() {
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
     }
 
     public List<AbdrImage> getAbdrImage() {

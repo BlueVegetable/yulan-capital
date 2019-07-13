@@ -9,7 +9,7 @@
         <result column="IMAGE_PATH" property="imagePath" jdbcType="VARCHAR"/>
     </resultMap>
     <select id="getAbdrImage" parameterType="java.util.Map" resultMap="AbdrImageMap">
-       select *  from ABDR_IMAGE t where t.ABDR_ID = #{abdrId,jdbcType=CHAR}
+       select *  from ABDR_IMAGE t where t.ABDR_ID = #{abdrId,jdbcType=CHAR} order by t.image_index
     </select>
 
     <delete id="deleteAbdrImage" parameterType="String">

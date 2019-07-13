@@ -21,9 +21,9 @@
         select * from(
         select rownum rm, c.*  from
         (
-        select t.* ,COUNT(*) OVER () TOTAL from AIRBRUSHDESIGNREASSURE t
+        select t.* ,COUNT(*) OVER () TOTAL from AIRBRUSHDESIGNREASSURE t  where 1=1
         <if test="START_DATE != null">
-        where t.create_ts &gt;= to_date(#{START_DATE},'yyyy/mm/dd hh24:mi:ss')
+        and t.create_ts &gt;= to_date(#{START_DATE},'yyyy/mm/dd hh24:mi:ss')
         </if>
         <if test="END_DATE != null">
         and t.create_ts &lt;= to_date(#{END_DATE},'yyyy/mm/dd hh24:mi:ss')
@@ -34,7 +34,7 @@
         <if test="STATE != null">
         and t.state = #{STATE}
         </if>
-        order by t.create_ts asc
+        order by t.create_ts DESC
         ) c)tm
         <if test="start!=null">
             where rm &gt;= #{start} and rm &lt;= #{number}

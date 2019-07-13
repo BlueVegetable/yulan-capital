@@ -27,6 +27,7 @@ public class CustomerController {
     @RequestMapping("getSingleCustomerInfo")
     public Map getSingleCustomerInfo(@RequestBody Map<String,Object> data){
         String companyId = (String)data.get("companyId");
-        return customerService.getSingleCustomerInfo(companyId);
+        String erpCreator = (String)data.get("erpCreator");//创建人
+        return customerService.getSingleCustomerInfo(companyId, erpCreator);
     }
 }

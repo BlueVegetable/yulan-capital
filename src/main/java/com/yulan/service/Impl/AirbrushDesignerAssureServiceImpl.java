@@ -5,16 +5,15 @@ import com.yulan.dao.AirbrushDesignerAssureDao;
 import com.yulan.dao.Web_userDao;
 import com.yulan.pojo.AbdrImage;
 import com.yulan.pojo.AirbrushDesignerAssure;
+import com.yulan.pojo.Customer;
 import com.yulan.pojo.Web_user;
 import com.yulan.service.AirbrushDesignerAssureService;
 import com.yulan.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Service
 public class AirbrushDesignerAssureServiceImpl implements AirbrushDesignerAssureService {
@@ -40,6 +39,7 @@ public class AirbrushDesignerAssureServiceImpl implements AirbrushDesignerAssure
                         startDate, endDate, states, page, lastNum);
         for(int i = 0; i < airbrushDesignerAssureList.size() ; i++){
             AirbrushDesignerAssure airbrushDesignerAssure = airbrushDesignerAssureList.get(i);
+            airbrushDesignerAssure.setRealName(stringUtil.GBKToUTF8(web_userDao.getWebUserNameById(airbrushDesignerAssure.getErpCreator())));
             if(null != airbrushDesignerAssure.getCname()) {
                 airbrushDesignerAssure.setCname(stringUtil.GBKToUTF8(airbrushDesignerAssure.getCname()));
             }
@@ -98,6 +98,9 @@ public class AirbrushDesignerAssureServiceImpl implements AirbrushDesignerAssure
                     flag = 1;
 
         }
+        Date reassureTs =new Date(System.currentTimeMillis());//测试接口
+        airbrushDesignerAssure.setReassureTs(reassureTs);
+
         if(flag == 0 && airbrushDesignerAssureDao.updateAirbrushDesignerAssure(airbrushDesignerAssure)){
             map.put("msg","SUCCESS");
             map.put("code", 0);
@@ -135,28 +138,63 @@ public class AirbrushDesignerAssureServiceImpl implements AirbrushDesignerAssure
         return map;
     }
 
+
     @Override
-    public Map insertAirbrushDesignerAssure(AirbrushDesignerAssure airbrushDesignerAssure) {
-        Map<String, Object> map = new HashMap<>();
-         airbrushDesignerAssure.setCid(changeLoginNameToCompanyID(airbrushDesignerAssure.getCid()));
+    public AirbrushDesignerAssure insertAirbrushDesignerAssure(String id, Customer customer, String erpCreator) {
+        AirbrushDesignerAssure airbrushDesignerAssure = new AirbrushDesignerAssure();
+
+        Date createTs =new Date(System.currentTimeMillis());//测试接口
+        airbrushDesignerAssure.setCreateTs(createTs);
+
+        airbrushDesignerAssure.setCid(customer.getCustomerCode());
+        airbrushDesignerAssure.setId(id);
+        airbrushDesignerAssure.setOfficeTel(customer.getOfficeTel());
+        airbrushDesignerAssure.setErpCreator(erpCreator);
+
        if(null != airbrushDesignerAssure.getCname()) {
-            airbrushDesignerAssure.setCname(stringUtil.UTF8ToGBK(airbrushDesignerAssure.getCname()));
+            airbrushDesignerAssure.setCname(stringUtil.UTF8ToGBK(customer.getShortName()));
         }
         if(null != airbrushDesignerAssure.getCustomerAgent()){
-            airbrushDesignerAssure.setCustomerAgent(stringUtil.UTF8ToGBK(airbrushDesignerAssure.getCustomerAgent()));
+            airbrushDesignerAssure.setCustomerAgent(stringUtil.UTF8ToGBK(customer.getCustomerAgent()));
         }
         if(null != airbrushDesignerAssure.getSendbackReason()){
             airbrushDesignerAssure.setSendbackReason(stringUtil.UTF8ToGBK(airbrushDesignerAssure.getSendbackReason()));
         }
 
-        if(airbrushDesignerAssureDao.insertAirbrushDesignerAssure(airbrushDesignerAssure)){
-            map.put("msg", "SUCCESS");
-            map.put("code", 0);
-        }else {
-            map.put("msg", "FAILED");
-            map.put("code", 1);
+        airbrushDesignerAssureDao.insertAirbrushDesignerAssure(airbrushDesignerAssure);
+        return airbrushDesignerAssure;
+    }
+
+    //创建喷绘确认书流水号
+    @Override
+    public String getAirbrushDesignerAssureId() {
+        String id = "";
+        String idhead = "AB";
+        SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
+        String s = df.format(new java.util.Date());
+        s = s.substring(2);//获取时间后6位，如20190227得190227
+        List<Map<String, Object>> idMaps =
+                airbrushDesignerAssureDao.findAirbrushDesignerAssureId(s);
+        if (idMaps.size() == 0) {
+            id = idhead + s + "00001";
+        } else {
+            List<Integer> nums = new ArrayList<>();
+            for (Map<String, Object> map : idMaps) {
+                String idS = map.get("ID").toString();
+                idS = idS.substring(8);//取后面流水号
+                int idI = Integer.parseInt(idS);
+                nums.add(idI);
+            }
+            int idIMax = Collections.max(nums);//取最大
+            int o = 100000;
+            o = o + idIMax + 1;
+            String p = o + "";
+            p = p.substring(1);//获取流水号
+            id = idhead + s + p;
+
         }
-        return map;
+        return id;
+
     }
 
     private String changeLoginNameToCompanyID(String cid) {
