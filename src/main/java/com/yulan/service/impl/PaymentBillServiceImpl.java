@@ -169,8 +169,13 @@ public class PaymentBillServiceImpl implements PaymentBillService {
     public Map updatePayBillState(Map<String, Object> map) {
         String state=map.get("state").toString();
         String id=map.get("id").toString();
+        Timestamp nowTime= new Timestamp(System.currentTimeMillis());//记录作废日期
+        PaymentBill paymentBill=new PaymentBill();
+        paymentBill.setId(id);
+        paymentBill.setState(state);
+        paymentBill.setCancelTs(nowTime);
         Map result=new HashMap();
-        if (paymentBillDao.updatePayBillState(id,state)){
+        if (paymentBillDao.updatePayBill(paymentBill)){
             result=Response.getResponseMap(0,"SUCCESS","OK");
         }else {
             result=Response.getResponseMap(1,"FALSE","FALSE");
