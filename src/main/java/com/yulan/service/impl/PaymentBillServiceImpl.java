@@ -169,8 +169,13 @@ public class PaymentBillServiceImpl implements PaymentBillService {
     public Map updatePayBillState(Map<String, Object> map) {
         String state=map.get("state").toString();
         String id=map.get("id").toString();
+        Timestamp nowTime= new Timestamp(System.currentTimeMillis());//记录作废日期
+        PaymentBill paymentBill=new PaymentBill();
+        paymentBill.setId(id);
+        paymentBill.setState(state);
+        paymentBill.setCancelTs(nowTime);
         Map result=new HashMap();
-        if (paymentBillDao.updatePayBillState(id,state)){
+        if (paymentBillDao.updatePayBill(paymentBill)){
             result=Response.getResponseMap(0,"SUCCESS","OK");
         }else {
             result=Response.getResponseMap(1,"FALSE","FALSE");
@@ -181,7 +186,7 @@ public class PaymentBillServiceImpl implements PaymentBillService {
     @Override
     public Map updatePayBill(Map<String, Object> map) throws UnsupportedEncodingException {
         Map result=new HashMap();
-
+        Timestamp nowTime= new Timestamp(System.currentTimeMillis());//更新提交时间
         Date now=new Date(System.currentTimeMillis());//测试接口
 
         for (Map.Entry<String, Object> entry : map.entrySet()) {//转码
@@ -192,7 +197,8 @@ public class PaymentBillServiceImpl implements PaymentBillService {
         }
         PaymentBill paymentBill= MapUtils.mapToBean(map,PaymentBill.class);
 
-
+        paymentBill.setCreateTs(nowTime);//更新提交时间
+        paymentBill.setState("SUBMITED");//更新状态（提交），状态(SUBMITED（已提交）,PROCESED（已处理）,SENDBACK（退回）,CANCELED（作废）)
         if (paymentBill.getPayDate()==null){
             paymentBill.setPayDate(now);//测试
         }
