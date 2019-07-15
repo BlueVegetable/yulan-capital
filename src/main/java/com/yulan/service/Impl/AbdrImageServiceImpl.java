@@ -31,11 +31,8 @@ public class AbdrImageServiceImpl implements AbdrImageService {
         Map<String, Object> map = new HashMap<>();
         AirbrushDesignerAssure airbrushDesignerAssure = airbrushDesignerAssureDao.getAirbrushDesignerAssureSingle(abdrImage.getAbdrId());
         //给图片排序号
-        if(null != airbrushDesignerAssure.getImageMaxIndex()){
-            abdrImage.setImageIndex((short)(airbrushDesignerAssure.getImageMaxIndex()+1));
-        }else{
-            abdrImage.setImageIndex((short)1);
-        }
+         abdrImage.setImageIndex((short)(airbrushDesignerAssure.getImageMaxIndex()+1));
+
 
         if(abdrImageDao.insertAbdrImage(abdrImage)){
             airbrushDesignerAssure.setImageMaxIndex((short)(airbrushDesignerAssure.getImageMaxIndex()+1));

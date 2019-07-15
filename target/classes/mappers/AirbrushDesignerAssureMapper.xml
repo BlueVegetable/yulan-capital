@@ -48,6 +48,36 @@
     <update id="updateAirbrushDesignerAssure" parameterType="com.yulan.pojo.AirbrushDesignerAssure">
         update AIRBRUSHDESIGNREASSURE t
         <set >
+            <if test="erpCreator != null" >
+                ERP_CREATOR = #{erpCreator,jdbcType=VARCHAR},
+            </if>
+            <if test="createTs != null" >
+                CREATE_TS = #{createTs,jdbcType=TIMESTAMP},
+            </if>
+            <if test="cid != null" >
+                CID = #{cid,jdbcType=VARCHAR},
+            </if>
+            <if test="cname != null" >
+                CNAME = #{cname,jdbcType=VARCHAR},
+            </if>
+            <if test="customerAgent != null" >
+                CUSTOMER_AGENT = #{customerAgent,jdbcType=VARCHAR},
+            </if>
+            <if test="officeTel != null" >
+                OFFICE_TEL = #{officeTel,jdbcType=VARCHAR},
+            </if>
+            <if test="reassureTs != null" >
+                REASSURE_TS = #{reassureTs,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sendbackReason != null" >
+                SENDBACK_REASON = #{sendbackReason,jdbcType=VARCHAR},
+            </if>
+            <if test="imageCount != null" >
+                IMAGE_COUNT = #{imageCount,jdbcType=DECIMAL},
+            </if>
+            <if test="imageMaxIndex != null" >
+                IMAGE_MAX_INDEX = #{imageMaxIndex,jdbcType=DECIMAL},
+            </if>
             <if test="state != null" >
                 STATE = #{state,jdbcType=VARCHAR},
             </if>

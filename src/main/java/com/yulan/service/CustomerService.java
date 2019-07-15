@@ -34,6 +34,7 @@ public class CustomerService {
         customer.setCustomerAgent(StringUtil.GBKToUTF8(customer.getCustomerAgent()));
 
         String id = airbrushDesignerAssureService.getAirbrushDesignerAssureId();
+
         map.put("AirbrushDesignerAssure",airbrushDesignerAssureService.insertAirbrushDesignerAssure( id, customer,erpCreator));
         map.put("customerInfo",customer);
         map.put("code",0);

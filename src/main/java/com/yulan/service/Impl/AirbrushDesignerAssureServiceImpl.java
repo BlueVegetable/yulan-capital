@@ -150,18 +150,18 @@ public class AirbrushDesignerAssureServiceImpl implements AirbrushDesignerAssure
         airbrushDesignerAssure.setId(id);
         airbrushDesignerAssure.setOfficeTel(customer.getOfficeTel());
         airbrushDesignerAssure.setErpCreator(erpCreator);
-
-       if(null != airbrushDesignerAssure.getCname()) {
+       //存进数据库的时候要转码
+       if(null != customer.getShortName()) {
             airbrushDesignerAssure.setCname(stringUtil.UTF8ToGBK(customer.getShortName()));
         }
-        if(null != airbrushDesignerAssure.getCustomerAgent()){
+        if(null != customer.getCustomerAgent()){
             airbrushDesignerAssure.setCustomerAgent(stringUtil.UTF8ToGBK(customer.getCustomerAgent()));
         }
-        if(null != airbrushDesignerAssure.getSendbackReason()){
-            airbrushDesignerAssure.setSendbackReason(stringUtil.UTF8ToGBK(airbrushDesignerAssure.getSendbackReason()));
-        }
-
         airbrushDesignerAssureDao.insertAirbrushDesignerAssure(airbrushDesignerAssure);
+
+        //但是返回的数据要是UTF-8
+        airbrushDesignerAssure.setCname(customer.getCustomerAgent());
+        airbrushDesignerAssure.setCustomerAgent(customer.getCustomerAgent());
         return airbrushDesignerAssure;
     }
 
