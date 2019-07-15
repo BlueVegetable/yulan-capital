@@ -70,6 +70,7 @@ public class AbdrImageServiceImpl implements AbdrImageService {
         }
         map.put("abdrImageList",abdrImageList);
         map.put("code", 0);
+
         return map;
     }
 

@@ -93,6 +93,9 @@ public class AirbrushDesignerAssureServiceImpl implements AirbrushDesignerAssure
             case"不同意":
                 airbrushDesignerAssure.setState("CANCELED");
                 break;
+            case"客户确认中":
+                airbrushDesignerAssure.setState("CUSTOMERAFFIRM");
+                break;
                 default:
                     map.put("data","客户状态不正确");
                     flag = 1;
