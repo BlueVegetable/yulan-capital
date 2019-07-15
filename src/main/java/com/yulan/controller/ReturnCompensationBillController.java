@@ -61,6 +61,13 @@ public class ReturnCompensationBillController {
     }
 
     @ResponseBody
+    @RequestMapping("generateID")
+    public Map generateID() {
+        String id = returnCompensationBillService.generateID();
+        return Response.getResponseMap(0,"",id);
+    }
+
+    @ResponseBody
     @RequestMapping("updateReturnCompensationBill")
     public Map updateReturnCompensationBill(@RequestBody ReturnCompensationBill returnCompensationBill) {
         return Response.getResponseMap(0,"",returnCompensationBillService.updateReturnCompensationBill(returnCompensationBill));

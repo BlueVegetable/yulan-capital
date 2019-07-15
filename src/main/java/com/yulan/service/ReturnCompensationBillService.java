@@ -26,8 +26,7 @@ public class ReturnCompensationBillService {
     public boolean addReturnCompensationBill(ReturnCompensationBill returnCompensationBill) {
         List<RtcbItem> rtcbItems = returnCompensationBill.getRtcbItems();
 
-        String id = generateID();
-        returnCompensationBill.setId(id);
+        String id = returnCompensationBill.getId();
         returnCompensationBill.setErpCreatorname(StringUtil.UTF8ToGBK(returnCompensationBill.getErpCreatorname()));
         returnCompensationBill.setCname(StringUtil.UTF8ToGBK(returnCompensationBill.getCname()));
         returnCompensationBill.setCreateTs(new Timestamp(System.currentTimeMillis()));
@@ -127,7 +126,7 @@ public class ReturnCompensationBillService {
         return returnCompensationBillDao.updateReturnCompensationBillState(id,state) > 0;
     }
 
-    private synchronized String generateID() {
+    public synchronized String generateID() {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyMMdd");
         String previous = simpleDateFormat.format(timestamp);

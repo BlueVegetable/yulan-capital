@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yulan.dao.SimpleItemDao" >
-    <select id="getSimpleItemByItemNo" parameterType="String" resultType="SimpleItem">
-        select item_no,productversion_name,note unit from ITEM
-        left join product_version on item.item_version=product_version.productversion_id
-        left join unit on item.unit = unit.unit where item_no = #{itemNo}
-    </select>
-</mapper>
