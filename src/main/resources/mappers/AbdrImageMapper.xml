@@ -9,7 +9,7 @@
         <result column="IMAGE_PATH" property="imagePath" jdbcType="VARCHAR"/>
     </resultMap>
     <select id="getAbdrImage" parameterType="java.util.Map" resultMap="AbdrImageMap">
-       select *  from ABDR_IMAGE t where t.ABDR_ID = #{abdrId,jdbcType=CHAR}
+       select *  from ABDR_IMAGE t where t.ABDR_ID = #{abdrId,jdbcType=CHAR} order by t.image_index
     </select>
 
     <delete id="deleteAbdrImage" parameterType="String">
@@ -31,6 +31,9 @@
             <if test="memo != null" >
                 MEMO,
             </if>
+            <if test="imagePath != null" >
+               IMAGE_PATH,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
             <if test="abdrId != null" >
@@ -44,6 +47,9 @@
             </if>
             <if test="memo != null" >
                 #{memo,jdbcType=VARCHAR},
+            </if>
+            <if test="imagePath != null" >
+                #{imagePath,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>

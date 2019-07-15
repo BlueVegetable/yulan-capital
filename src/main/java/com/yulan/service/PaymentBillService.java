@@ -25,5 +25,33 @@ public interface PaymentBillService {
      */
     Map getPayBills(Map<String,Object> map) throws UnsupportedEncodingException;
 
+    /**
+     * 获取汇款凭证详情
+     * @param map
+     * @return
+     */
+    Map getPayBillContent(Map<String,Object> map) throws UnsupportedEncodingException;
+
+    /**
+     * 更新汇款凭证状态
+     * @param map
+     * @return
+     */
+    Map updatePayBillState(Map<String,Object> map);
+
+    /**
+     * 更新汇款凭证
+     * @param map
+     * @return
+     */
+    Map updatePayBill(Map<String,Object> map) throws UnsupportedEncodingException;
+
+
+    /**
+     * 获取客户已填银行账号和汇款人名
+     * @param map
+     * @return
+     */
+    Map getPayNameAndAccount(Map<String,Object> map) throws UnsupportedEncodingException;
 
 }

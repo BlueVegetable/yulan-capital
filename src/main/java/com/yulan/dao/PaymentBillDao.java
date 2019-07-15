@@ -46,4 +46,37 @@ public interface PaymentBillDao {
      * @return
      */
     int countPaybills(@Param("cid")String cid,@Param("state")String state,@Param("beginTime") String beginTime,@Param("finishTime") String finishTime);
+
+
+    /**
+     * 查看汇款凭证详情
+     * @param id
+     * @return
+     */
+    PaymentBill getPayBillContent(@Param("id") String id);
+
+
+    /**
+     *更新汇款凭证状态
+     * @param id
+     * @param state
+     * @return
+     */
+    boolean updatePayBillState(@Param("id") String id,@Param("state")String state);
+
+    /**
+     * 更新汇款凭证
+     * @param paymentBill
+     * @return
+     */
+    boolean updatePayBill(PaymentBill paymentBill);
+
+
+    /**
+     * 获取客户已填银行账号和汇款人名
+     * @param cid
+     * @return
+     */
+    List<Map<String,Object>> getPayNameAndAccount(@Param("cid")String cid);
+
 }

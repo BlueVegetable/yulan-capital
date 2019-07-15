@@ -21,11 +21,12 @@
         <result column="ERP_PROCESS_OP" property="erpProcessOp" jdbcType="VARCHAR" />
         <result column="STATE" property="state" jdbcType="CHAR" />
         <result column="PAYER_ACCOUNT" property="payerAccount" jdbcType="VARCHAR" />
+        <result column="IMG_URL" property="imgUrl" jdbcType="VARCHAR" />
     </resultMap>
     <sql id="PaymentBillList" >
     ID, CID, CNAME, CREATE_TS, YULAN_BANK, PAYER_NAME, PAY_AMOUNT, PAY_DATE, IMG_FILE_NAME,
     SUBMIT_TS, MEMO, CANCEL_TS, SENDBACK_TS, SENDBACK_REASON, ERP_PROCESS_TS, ERP_PROCESS_OP,
-    STATE, PAYER_ACCOUNT
+    STATE, PAYER_ACCOUNT,IMG_URL
   </sql>
 
     <select id="getPaymentBillByID" parameterType="String" resultType="PaymentBill">
@@ -93,6 +94,9 @@
             <if test="payerAccount != null" >
                 PAYER_ACCOUNT,
             </if>
+            <if test="imgUrl != null" >
+                IMG_URL,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
             <if test="id != null" >
@@ -149,6 +153,9 @@
             <if test="payerAccount != null" >
                 #{payerAccount,jdbcType=VARCHAR},
             </if>
+            <if test="imgUrl != null" >
+                #{imgUrl,jdbcType=VARCHAR},
+            </if>
         </trim>
     </insert>
 
@@ -199,6 +206,79 @@
             and cid =#{cid}
         </if>
         )
+    </select>
+
+    <select id="getPayBillContent" resultType="PaymentBill">
+        select <include refid="PaymentBillList" /> from PAYMENT_BILL t where id =#{id}
+    </select>
+
+    <update id="updatePayBillState" >
+        update  PAYMENT_BILL t set t.state =#{state} where t.id=#{id}
+    </update>
+
+    <update id="updatePayBill" parameterType="PaymentBill" >
+        update PAYMENT_BILL
+        <set >
+            <if test="cid != null" >
+                CID = #{cid,jdbcType=VARCHAR},
+            </if>
+            <if test="cname != null" >
+                CNAME = #{cname,jdbcType=VARCHAR},
+            </if>
+            <if test="createTs != null" >
+                CREATE_TS = #{createTs,jdbcType=TIMESTAMP},
+            </if>
+            <if test="yulanBank != null" >
+                YULAN_BANK = #{yulanBank,jdbcType=VARCHAR},
+            </if>
+            <if test="payerName != null" >
+                PAYER_NAME = #{payerName,jdbcType=VARCHAR},
+            </if>
+            <if test="payAmount != null" >
+                PAY_AMOUNT = #{payAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="payDate != null" >
+                PAY_DATE = #{payDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="imgFileName != null" >
+                IMG_FILE_NAME = #{imgFileName,jdbcType=VARCHAR},
+            </if>
+            <if test="submitTs != null" >
+                SUBMIT_TS = #{submitTs,jdbcType=TIMESTAMP},
+            </if>
+            <if test="memo != null" >
+                MEMO = #{memo,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelTs != null" >
+                CANCEL_TS = #{cancelTs,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sendbackTs != null" >
+                SENDBACK_TS = #{sendbackTs,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sendbackReason != null" >
+                SENDBACK_REASON = #{sendbackReason,jdbcType=VARCHAR},
+            </if>
+            <if test="erpProcessTs != null" >
+                ERP_PROCESS_TS = #{erpProcessTs,jdbcType=TIMESTAMP},
+            </if>
+            <if test="erpProcessOp != null" >
+                ERP_PROCESS_OP = #{erpProcessOp,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null" >
+                STATE = #{state,jdbcType=CHAR},
+            </if>
+            <if test="payerAccount != null" >
+                PAYER_ACCOUNT = #{payerAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="imgUrl != null" >
+                IMG_URL = #{imgUrl,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=CHAR}
+    </update>
+
+    <select id="getPayNameAndAccount" resultType="Map">
+        select t.payer_name,t.payer_account from PAYMENT_BILL t where t.cid=#{cid} group by t.payer_name,t.payer_account
     </select>
 
 </mapper>

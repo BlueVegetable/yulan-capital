@@ -10,4 +10,6 @@ public interface Web_userDao {
 
     //将操作员账号转换成公司ID
     String changeLoginNameToCompanyID(String cid);
+    //获取账号的名称
+    String getWebUserNameById(String cid);
 }

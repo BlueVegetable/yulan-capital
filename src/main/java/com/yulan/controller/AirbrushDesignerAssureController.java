@@ -38,11 +38,24 @@ public class AirbrushDesignerAssureController {
         }
         int lastNum=page+limit-1;
 
+        if (null != cid && cid.equals("")){
+            cid=null;
+        }
+        if (null != state && state.equals("")){
+            state=null;
+        }
+        if(null != startDate && startDate.equals("")){
+            startDate = null;
+        }
+        if(null != endDate && endDate.equals("")){
+            endDate = null;
+        }
+
         return airbrushDesignerAssureService.getAirbrushDesignerAssure(cid,startDate,endDate, state, page, lastNum);
     }
 
     /**
-     * 修改委托喷绘书接口
+     * 修改委托喷绘书客户状态接口
      * @param airbrushDesignerAssure
      * @return
      */
@@ -52,6 +65,7 @@ public class AirbrushDesignerAssureController {
 
         return airbrushDesignerAssureService.updateAirbrushDesignerAssure(airbrushDesignerAssure);
     }
+
 
     /**
      * 删除委托喷绘书接口
