@@ -32,7 +32,12 @@ public class AbdrImageServiceImpl implements AbdrImageService {
         AirbrushDesignerAssure airbrushDesignerAssure = airbrushDesignerAssureDao.getAirbrushDesignerAssureSingle(abdrImage.getAbdrId());
         //给图片排序号
          abdrImage.setImageIndex((short)(airbrushDesignerAssure.getImageMaxIndex()+1));
-
+        if(null != abdrImage.getSpecifications()){
+            abdrImage.setSpecifications(stringUtil.UTF8ToGBK(abdrImage.getSpecifications()));
+        }
+        if(null != abdrImage.getMemo()){
+            abdrImage.setMemo(stringUtil.UTF8ToGBK(abdrImage.getMemo()));
+        }
 
         if(abdrImageDao.insertAbdrImage(abdrImage)){
             airbrushDesignerAssure.setImageMaxIndex((short)(airbrushDesignerAssure.getImageMaxIndex()+1));
