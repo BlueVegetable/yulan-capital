@@ -33,6 +33,15 @@
     </properties>
 
     <dependencies>
+
+        <!-- 阿里数据库连接池 下载地址http://www.mvnrepository.com/artifact/com.alibaba/druid-->
+        <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.10</version>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
