@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +27,8 @@ public class ReturnCompensationBillService {
     public boolean addReturnCompensationBill(ReturnCompensationBill returnCompensationBill) {
         List<RtcbItem> rtcbItems = returnCompensationBill.getRtcbItems();
 
-        String id = returnCompensationBill.getId();
+        String id = generateID();
+        returnCompensationBill.setId(id);
         returnCompensationBill.setErpCreatorname(StringUtil.UTF8ToGBK(returnCompensationBill.getErpCreatorname()));
         returnCompensationBill.setCname(StringUtil.UTF8ToGBK(returnCompensationBill.getCname()));
         returnCompensationBill.setCreateTs(new Timestamp(System.currentTimeMillis()));
@@ -56,7 +58,7 @@ public class ReturnCompensationBillService {
 
     public List<ReturnCompensationBill> getSimpleReturnCompensationBills(String CID, Integer page, Integer number,
                                                                          Timestamp startTime,Timestamp endTime,String state,
-                                                                         String createName,String cName) {
+                                                                         String createName,String cName,String itemNo) {
         Integer start = (page-1)*number+1;
         Integer end = start + number;
         Map parameters = new HashMap();
@@ -68,6 +70,7 @@ public class ReturnCompensationBillService {
         parameters.put("state",state);
         parameters.put("createName",StringUtil.UTF8ToGBK(createName));
         parameters.put("cName",StringUtil.UTF8ToGBK(cName));
+        parameters.put("itemNo",itemNo);
         List<ReturnCompensationBill> result = returnCompensationBillDao.getSimpleReturnCompensationBills(parameters);
         for (ReturnCompensationBill inline:result) {
             inline.setErpCreatorname(StringUtil.GBKToUTF8(inline.getErpCreatorname()));
@@ -76,8 +79,59 @@ public class ReturnCompensationBillService {
         return result;
     }
 
+    public Map getAllReturnCompensationBills(String CID, Integer page, Integer number,
+                                                                      Timestamp startTime,Timestamp endTime,String state,
+                                                                      String createName,String cName,String itemNo) {
+        Map parameters = new HashMap();
+        Integer start = (page-1)*number;
+        Integer end = start + number;
+        parameters.put("start",start);
+        parameters.put("end",end);
+        parameters.put("CID",CID);
+        parameters.put("startTime",startTime);
+        parameters.put("endTime",endTime);
+        parameters.put("state",state);
+        parameters.put("createName",StringUtil.UTF8ToGBK(createName));
+        parameters.put("cName",StringUtil.UTF8ToGBK(cName));
+        List<ReturnCompensationBill> returnCompensationBills = returnCompensationBillDao.getAllReturnCompensationBills(parameters);
+        List<ReturnCompensationBill> deal = new ArrayList<>();
+        List<ReturnCompensationBill> data = new ArrayList<>();
+        for (ReturnCompensationBill inline:returnCompensationBills) {
+            List<RtcbItem> rtcbItems = inline.getRtcbItems();
+            if (rtcbItems!=null&&rtcbItems.size()!=0) {
+                for (RtcbItem rtcbItem:rtcbItems) {
+                    if(rtcbItem.getItemNo().equals(itemNo)) {
+                        deal.add(inline);
+                        break;
+                    }
+                }
+            }
+        }
+        if(deal.size()>=(start+1)) {
+            if(deal.size()<end+1) {
+                for (int i=start;i<deal.size();i++) {
+                    data.add(deal.get(i));
+                }
+            } else {
+                for (int i=start;i<end+1;i++) {
+                    data.add(deal.get(i));
+                }
+            }
+        }
+        for (ReturnCompensationBill inline:data) {
+            inline.setErpCreatorname(StringUtil.GBKToUTF8(inline.getErpCreatorname()));
+            inline.setCname(StringUtil.GBKToUTF8(inline.getCname()));
+        }
+        Map result = new HashMap();
+        result.put("code",0);
+        result.put("msg","");
+        result.put("count",deal.size());
+        result.put("data",data);
+        return result;
+    }
+
     public Long countSimpleReturnCompensationBills(String CID, Timestamp startTime,Timestamp endTime,String state,
-                                                   String createName,String cName) {
+                                                   String createName,String cName,String itemNo) {
         Map parameters = new HashMap();
         parameters.put("CID",CID);
         parameters.put("startTime",startTime);
@@ -85,6 +139,7 @@ public class ReturnCompensationBillService {
         parameters.put("state",state);
         parameters.put("createName",StringUtil.UTF8ToGBK(createName));
         parameters.put("cName",StringUtil.UTF8ToGBK(cName));
+        parameters.put("itemNo",itemNo);
         return returnCompensationBillDao.countSimpleReturnCompensationBills(parameters);
     }
 

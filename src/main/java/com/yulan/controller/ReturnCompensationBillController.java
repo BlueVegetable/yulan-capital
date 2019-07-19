@@ -41,15 +41,16 @@ public class ReturnCompensationBillController {
              @RequestParam("page")Integer page, @RequestParam("number")Integer number,
              @RequestParam(value = "startDate",required = false)String startDate,
              @RequestParam(value = "endDate",required = false)String endDate,
-             @RequestParam(value = "state",required = false)String state) {
+             @RequestParam(value = "state",required = false)String state,
+             @RequestParam(value = "itemNo",required = false)String itemNo) {
         Timestamp startTime = null,endTime = null;
         if(startDate != null)
         startTime = Timestamp.valueOf(startDate + " 00:00:00");
         if(endDate != null)
         endTime = Timestamp.valueOf(endDate + " 23:59:59");
         Map result = Response.getResponseMap(0,"",returnCompensationBillService.
-                getSimpleReturnCompensationBills(CID,page,number,startTime,endTime,state,createName,cName));
-        result.put("count",returnCompensationBillService.countSimpleReturnCompensationBills(CID,startTime,endTime,state,createName,cName));
+                getSimpleReturnCompensationBills(CID,page,number,startTime,endTime,state,createName,cName,itemNo));
+        result.put("count",returnCompensationBillService.countSimpleReturnCompensationBills(CID,startTime,endTime,state,createName,cName,itemNo));
         return result;
     }
 
