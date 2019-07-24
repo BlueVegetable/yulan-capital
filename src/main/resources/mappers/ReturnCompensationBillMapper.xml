@@ -78,7 +78,7 @@
         <if test="itemNo != null">
             and (select count(*) from rtcb_item where item_no = #{itemNo} and rtcb_id = t.id)>0
         </if>
-        order by id)
+        order by id desc)
         table_alias WHERE table_alias.rowno &gt;= #{start}
     </select>
 

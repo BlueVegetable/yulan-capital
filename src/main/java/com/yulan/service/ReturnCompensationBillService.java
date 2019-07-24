@@ -160,6 +160,13 @@ public class ReturnCompensationBillService {
 
     public boolean updateReturnCompensationBill(ReturnCompensationBill returnCompensationBill) {
         String id = returnCompensationBill.getId();
+        returnCompensationBillDao.deleteReturnCompensationBill(id);
+        {
+            //转码过程
+            returnCompensationBill.setErpCreatorname(StringUtil.UTF8ToGBK(returnCompensationBill.getErpCreatorname()));
+            returnCompensationBill.setCname(StringUtil.UTF8ToGBK(returnCompensationBill.getCname()));
+        }
+        returnCompensationBillDao.addReturnCompensationBill(returnCompensationBill);
         rtcbItemDao.deleteRtcbItemsByRtcbID(id);
         List<RtcbItem> rtcbItems = returnCompensationBill.getRtcbItems();
         if(rtcbItems == null||rtcbItems.size() == 0) {
