@@ -185,7 +185,15 @@ public class ReturnCompensationBillService {
     }
 
     public boolean updateReturnCompensationBillState(String id,String state) {
-        return returnCompensationBillDao.updateReturnCompensationBillState(id,state) > 0;
+        if(state.equals("APPROVED")) {
+            return returnCompensationBillDao.updateReturnCompensationBillState(id, state,new Timestamp(System.currentTimeMillis())) > 0;
+        } else {
+            return returnCompensationBillDao.updateReturnCompensationBillState(id, state,null) > 0;
+        }
+    }
+
+    public boolean alterPrinted(String id,String printed) {
+        return returnCompensationBillDao.alterPrinted(id, printed) > 0;
     }
 
     public synchronized String generateID() {

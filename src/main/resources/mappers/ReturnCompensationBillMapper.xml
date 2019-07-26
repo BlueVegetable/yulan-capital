@@ -136,7 +136,13 @@
     </select>
 
     <update id="updateReturnCompensationBillState" parameterType="Map">
-        update RETURNCOMPENSATIONBILL set state = #{state} where id = #{id}
+        update RETURNCOMPENSATIONBILL set state = #{state},REASSURE_TS=#{reassureTs,jdbcType=TIMESTAMP} where id = #{id}
+    </update>
+
+    <update id="alterPrinted" parameterType="Map">
+        update RETURNCOMPENSATIONBILL
+        set PRINTED = #{printed}
+        where id = #{id}
     </update>
 
 </mapper>

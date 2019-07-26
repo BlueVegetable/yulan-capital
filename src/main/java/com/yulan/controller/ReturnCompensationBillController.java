@@ -23,7 +23,11 @@ public class ReturnCompensationBillController {
     @ResponseBody
     @RequestMapping("addReturnCompensationBill")
     public Map addReturnCompensationBill(@RequestBody ReturnCompensationBill returnCompensationBill) {
-        return Response.getResponseMap(0,"",returnCompensationBillService.addReturnCompensationBill(returnCompensationBill));
+        boolean flag = returnCompensationBillService.addReturnCompensationBill(returnCompensationBill);
+        if(flag)
+            return Response.getResponseMap(0,"",returnCompensationBill.getId());
+        else
+            return Response.getResponseMap(0,"",null);
     }
 
     @ResponseBody
@@ -79,6 +83,12 @@ public class ReturnCompensationBillController {
     public Map updateReturnCompensationBillState(@RequestParam("id")String id,@RequestParam("state")String state) {
         return Response.getResponseMap(0,"",
                 returnCompensationBillService.updateReturnCompensationBillState(id, state));
+    }
+
+    @ResponseBody
+    @RequestMapping("alterPrinted")
+    public Map alterPrinted(@RequestParam("id")String id,@RequestParam("printed")String printed) {
+        return Response.getResponseMap(0,"",returnCompensationBillService.alterPrinted(id, printed));
     }
 
 }

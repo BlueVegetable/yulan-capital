@@ -3,6 +3,7 @@ package com.yulan.dao;
 import com.yulan.pojo.ReturnCompensationBill;
 import org.apache.ibatis.annotations.Param;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +25,8 @@ public interface ReturnCompensationBillDao {
 
     int updateReturnCompensationBill(ReturnCompensationBill returnCompensationBill);
 
-    int updateReturnCompensationBillState(@Param("id") String id, @Param("state") String state);
+    int updateReturnCompensationBillState(@Param("id") String id, @Param("state") String state, @Param("reassureTs")Timestamp reassureTs);
+
+    int alterPrinted(@Param("id") String id,@Param("printed")String printed);
 
 }
