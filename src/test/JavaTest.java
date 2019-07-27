@@ -4,11 +4,19 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
-public class JavaTest {
-    public static void main(String args[]) {
-        String x="7";
-        int y = 2;
-        int z=2;
-        System.out.println(x+y+z);
-    }
+public class JavaTest extends Thread{
+
+        public static void main(String[] args) {
+            JavaTest t=new JavaTest();
+            JavaTest s=new JavaTest();
+            t.start();
+            System.out.println("one.");
+            s.start();
+            System.out.println("two.");
+        }
+        public void run() {
+            System.out.println("Thread");
+        }
+
 }
+
