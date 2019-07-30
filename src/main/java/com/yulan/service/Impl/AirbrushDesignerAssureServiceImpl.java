@@ -1,4 +1,4 @@
-package com.yulan.service.impl;
+package com.yulan.service.Impl;
 
 import com.yulan.dao.AbdrImageDao;
 import com.yulan.dao.AirbrushDesignerAssureDao;
@@ -153,6 +153,7 @@ public class AirbrushDesignerAssureServiceImpl implements AirbrushDesignerAssure
         airbrushDesignerAssure.setId(id);
         airbrushDesignerAssure.setOfficeTel(customer.getOfficeTel());
         airbrushDesignerAssure.setErpCreator(erpCreator);
+        airbrushDesignerAssure.setRealName(stringUtil.GBKToUTF8(web_userDao.getWebUserNameById(airbrushDesignerAssure.getErpCreator())));
        //存进数据库的时候要转码
        if(null != customer.getShortName()) {
             airbrushDesignerAssure.setCname(stringUtil.UTF8ToGBK(customer.getShortName()));
