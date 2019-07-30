@@ -2,8 +2,10 @@ package com.yulan.service;
 
 import com.yulan.dao.ReturnCompensationBillDao;
 import com.yulan.dao.RtcbItemDao;
+import com.yulan.dao.WebUserDao;
 import com.yulan.pojo.ReturnCompensationBill;
 import com.yulan.pojo.RtcbItem;
+import com.yulan.pojo.WebUser;
 import com.yulan.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +25,8 @@ public class ReturnCompensationBillService {
     private ReturnCompensationBillDao returnCompensationBillDao;
     @Autowired
     private RtcbItemDao rtcbItemDao;
+    @Autowired
+    private WebUserDao webUserDao;
 
     public boolean addReturnCompensationBill(ReturnCompensationBill returnCompensationBill) {
         List<RtcbItem> rtcbItems = returnCompensationBill.getRtcbItems();
@@ -64,7 +68,7 @@ public class ReturnCompensationBillService {
         Map parameters = new HashMap();
         parameters.put("start",start);
         parameters.put("end",end);
-        parameters.put("CID",CID);
+        parameters.put("CIDs",getCIDsByCID(CID));
         parameters.put("startTime",startTime);
         parameters.put("endTime",endTime);
         parameters.put("state",state);
@@ -133,7 +137,7 @@ public class ReturnCompensationBillService {
     public Long countSimpleReturnCompensationBills(String CID, Timestamp startTime,Timestamp endTime,String state,
                                                    String createName,String cName,String itemNo) {
         Map parameters = new HashMap();
-        parameters.put("CID",CID);
+        parameters.put("CIDs",getCIDsByCID(CID));
         parameters.put("startTime",startTime);
         parameters.put("endTime",endTime);
         parameters.put("state",state);
@@ -208,6 +212,21 @@ public class ReturnCompensationBillService {
         number++;
         String newID = "RZ" + previous + String.format("%05d", number);
         return newID;
+    }
+
+    private List<String> getCIDsByCID(String cid) {
+        WebUser webUser = webUserDao.getUser(cid);
+        if(webUser==null) {
+            return null;
+        } else {
+            String companyId = webUser.getCompanyId();
+            List<WebUser> webUsers = webUserDao.getWebUsersByCompanyId(companyId);
+            List<String> CIDs = new ArrayList<>();
+            for (WebUser inline:webUsers) {
+                CIDs.add(inline.getLoginName());
+            }
+            return CIDs;
+        }
     }
 
 }

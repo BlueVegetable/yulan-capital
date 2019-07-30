@@ -57,8 +57,12 @@
     <select id="getSimpleReturnCompensationBills" parameterType="Map" resultMap="BaseResultMap">
         SELECT * FROM (SELECT ROWNUM AS rowno, t.* FROM RETURNCOMPENSATIONBILL t
         where ROWNUM &lt; #{end}
-        <if test="CID != null">
-            and cid = #{CID}
+        <if test="CIDs != null and CIDs.size()>0">
+            and cid in (
+            <foreach collection="CIDs" item="cid" separator=",">
+                #{cid}
+            </foreach>
+            )
         </if>
         <if test="state != null">
             and state = #{state}
@@ -111,8 +115,12 @@
         (
         SELECT id FROM RETURNCOMPENSATIONBILL t
         where 1=1
-        <if test="CID != null">
-            and cid = #{CID}
+        <if test="CIDs != null and CIDs.size()>0">
+            and cid in (
+            <foreach collection="CIDs" item="cid" separator=",">
+                #{cid}
+            </foreach>
+            )
         </if>
         <if test="state != null">
             and state = #{state}
