@@ -27,7 +27,7 @@
           LOGINNAME,PASSWORD,REALNAME,COMPANY, TEL
           ,EMAIL,MEMO,to_char(TS,'yyyy-mm-dd'),USERID,to_char(MODIFYDATE,'yyyy-mm-dd')
           ,MACADDRESS,TYPE,PASSWORDX,STOPPED,CREATADMIN,USERSTATE,COMPANY_ID
-        from WEB_USER where LOGINNAME = #{cid}
+        from WEB_USER where LOGINNAME = #{cid,jdbcType=VARCHAR}
     </select>
 
     <select id="getWebUsersByCompanyId" parameterType="String" resultMap="WebUserMap">
